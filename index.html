@@ -8,222 +8,222 @@
 <style>
 /* ================ الخطوط ================ */
 @font-face {
-  font-family: "AA-TYPO";
-  src: url("AA-TYPO Normal.otf");
-  font-display: swap;
+  font-family: "AA-TYPO";
+  src: url("AA-TYPO Normal.otf");
+  font-display: swap;
 }
 
 /* ================ المتغيرات والألوان ================ */
 :root{
-  --gold-1: #ffe6a6;
-  --gold-2: #ffd166;
-  --gold-3: #ffb703;
-  --bg-dark: #0b0a07;
-  --glass-border: rgba(255,230,140,0.12);
-  --shadow: 0 14px 40px rgba(0,0,0,0.6);
-  --radius: 18px;
-  --txt: #fff9ef;
+  --gold-1: #ffe6a6;
+  --gold-2: #ffd166;
+  --gold-3: #ffb703;
+  --bg-dark: #0b0a07;
+  --glass-border: rgba(255,230,140,0.12);
+  --shadow: 0 14px 40px rgba(0,0,0,0.6);
+  --radius: 18px;
+  --txt: #fff9ef;
 }
 
 /* ================ الأساسيات ================ */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0;
-  min-height:100vh;
-  background: radial-gradient(1200px 600px at 10% 10%, rgba(255,210,95,0.06), transparent 8%),
-              radial-gradient(1000px 500px at 90% 90%, rgba(255,120,50,0.03), transparent 6%),
-              linear-gradient(180deg, #0b0a07 0%, #1b1710 100%);
-  color:var(--txt);
-  font-family:"AA-TYPO", "Cairo", system-ui, sans-serif;
-  direction:rtl;
-  display:flex;
-  flex-direction: column; /* للسماح بالعنوان العلوي */
-  align-items:center;
-  justify-content:center;
-  padding:28px;
-  overflow-x: hidden;
+  margin:0;
+  min-height:100vh;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(255,210,95,0.06), transparent 8%),
+              radial-gradient(1000px 500px at 90% 90%, rgba(255,120,50,0.03), transparent 6%),
+              linear-gradient(180deg, #0b0a07 0%, #1b1710 100%);
+  color:var(--txt);
+  font-family:"AA-TYPO", "Cairo", system-ui, sans-serif;
+  direction:rtl;
+  display:flex;
+  flex-direction: column; /* للسماح بالعنوان العلوي */
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  overflow-x: hidden;
 }
 
 /* ================ العنوان العلوي للمسابقة ================ */
 .main-giveaway-title {
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--gold-2);
-  text-shadow: 0 2px 15px rgba(255, 180, 0, 0.2);
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  background: rgba(255,255,255,0.02);
-  backdrop-filter: blur(4px);
-  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--gold-2);
+  text-shadow: 0 2px 15px rgba(255, 180, 0, 0.2);
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(4px);
+  text-align: center;
 }
 
 /* ================ الحاوية الرئيسية ================ */
 .app {
-  width:100%;
-  max-width:980px;
-  display:grid;
-  grid-template-columns: 1fr 380px;
-  gap:28px;
-  align-items:start;
+  width:100%;
+  max-width:980px;
+  display:grid;
+  grid-template-columns: 1fr 380px;
+  gap:28px;
+  align-items:start;
 }
 @media (max-width:920px){
-  .app { grid-template-columns: 1fr; }
-  .main-giveaway-title { font-size: 18px; }
+  .app { grid-template-columns: 1fr; }
+  .main-giveaway-title { font-size: 18px; }
 }
 
 /* ================ الكارت الرئيسي ================ */
 .card {
-  background: linear-gradient(180deg, rgba(255,250,230,0.02), rgba(255,245,210,0.01));
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(6px) saturate(120%);
-  position:relative;
-  overflow:hidden;
+  background: linear-gradient(180deg, rgba(255,250,230,0.02), rgba(255,245,210,0.01));
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(6px) saturate(120%);
+  position:relative;
+  overflow:hidden;
 }
 .card::before{ /* تأثير توهج خلفي */
-  content:""; position:absolute; left:-20%; top:-10%; width:400px; height:400px;
-  background:radial-gradient(circle at 30% 30%, rgba(255,214,120,0.06), transparent 40%);
-  transform:rotate(-15deg); pointer-events:none;
+  content:""; position:absolute; left:-20%; top:-10%; width:400px; height:400px;
+  background:radial-gradient(circle at 30% 30%, rgba(255,214,120,0.06), transparent 40%);
+  transform:rotate(-15deg); pointer-events:none;
 }
 
 /* الرأس */
 .header { display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:16px; }
 .logo-wrap{ display:flex; gap:12px; align-items:center; }
 .logo {
-  width:80px; height:80px; border-radius:16px; object-fit:cover;
-  border:3px solid rgba(255,210,90,0.12);
-  box-shadow: 0 8px 30px rgba(255,175,60,0.06);
+  width:80px; height:80px; border-radius:16px; object-fit:cover;
+  border:3px solid rgba(255,210,90,0.12);
+  box-shadow: 0 8px 30px rgba(255,175,60,0.06);
 }
 .title { font-size:24px; color:var(--gold-1); font-weight:700; }
 .subtitle { font-size:13px; color:rgba(255,255,255,0.6); }
 
 /* زر القائمة */
 .menu-btn {
-  background: transparent; border: 1px solid var(--glass-border);
-  border-radius: 8px; padding: 8px 12px; cursor: pointer;
-  color: var(--gold-2); font-size: 20px;
-  display: flex; align-items: center; justify-content: center;
-  transition: 0.2s;
+  background: transparent; border: 1px solid var(--glass-border);
+  border-radius: 8px; padding: 8px 12px; cursor: pointer;
+  color: var(--gold-2); font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  transition: 0.2s;
 }
 .menu-btn:hover { background: rgba(255,255,255,0.05); }
 
 /* ================ منطقة السحب (اللوتري) ================ */
 .lottery {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:14px; padding:20px;
-  display:flex; gap:18px; align-items:center; justify-content:space-between;
-  border: 1px solid rgba(255,220,120,0.06); margin-top: 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:14px; padding:20px;
+  display:flex; gap:18px; align-items:center; justify-content:space-between;
+  border: 1px solid rgba(255,220,120,0.06); margin-top: 10px;
 }
-.lottery-left{ 
-  flex:1; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.lottery-left{ 
+  flex:1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .lottery-right{ width:210px; display:flex; flex-direction:column; align-items:center; gap:12px; }
 
 /* ================ الأنيميشن الجديد (البكرات) ================ */
-.slots { 
-  display:flex; 
-  gap:10px; 
-  /* خلفية الأرقام قبل الدوران */
-  background:linear-gradient(180deg, rgba(0,0,0,0.16), rgba(255,255,255,0.03));
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,240,180,0.08);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.45), inset 0 -8px 40px rgba(0,0,0,0.12);
+.slots { 
+  display:flex; 
+  gap:10px; 
+  /* خلفية الأرقام قبل الدوران */
+  background:linear-gradient(180deg, rgba(0,0,0,0.16), rgba(255,255,255,0.03));
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,240,180,0.08);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45), inset 0 -8px 40px rgba(0,0,0,0.12);
 }
 .slot {
-  width:60px; height:80px;
-  background: #000;
-  border-radius: 8px;
-  position:relative; 
-  overflow:hidden; 
+  width:60px; height:80px;
+  background: #000;
+  border-radius: 8px;
+  position:relative; 
+  overflow:hidden; 
 }
 .slot-reel {
-  display: flex;
-  flex-direction: column;
-  transition: transform 2.5s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 2.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .slot-reel > div {
-  width: 60px; height: 80px;
-  font-size: 44px; font-weight: 800;
-  color: var(--gold-2);
-  display: flex; align-items: center; justify-content: center;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  width: 60px; height: 80px;
+  font-size: 44px; font-weight: 800;
+  color: var(--gold-2);
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .final-number-display {
-  font-size: 62px; font-weight:900; color: var(--gold-3);
-  text-shadow: 0 3px 12px rgba(255,150,0,0.15); letter-spacing:6px;
-  display: none; /* يظهر بعد انتهاء الدوران */
+  font-size: 62px; font-weight:900; color: var(--gold-3);
+  text-shadow: 0 3px 12px rgba(255,150,0,0.15); letter-spacing:6px;
+  display: none; /* يظهر بعد انتهاء الدوران */
 }
 
 /* الأزرار */
 .controls { display:flex; gap:12px; width:100%; }
 .btn {
-  flex:1; padding:12px; border-radius:12px; border:none; font-size:16px; cursor:pointer;
-  background: linear-gradient(180deg, rgba(255,210,80,0.16), rgba(255,180,40,0.06));
-  color:var(--txt); box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  transition: transform .2s, background .2s;
+  flex:1; padding:12px; border-radius:12px; border:none; font-size:16px; cursor:pointer;
+  background: linear-gradient(180deg, rgba(255,210,80,0.16), rgba(255,180,40,0.06));
+  color:var(--txt); box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform .2s, background .2s;
 }
 .btn:hover { transform: scale(1.03); }
 .btn:active{ transform:scale(0.98); }
 .btn:disabled { background: #555; color: #999; cursor: not-allowed; }
 .btn.gold {
-  background: linear-gradient(180deg,var(--gold-2),var(--gold-3));
-  color:#241700; font-weight:700;
-  border: 1px solid rgba(255,220,120,0.2);
-  box-shadow: 0 10px 30px rgba(255,160,30,0.22);
+  background: linear-gradient(180deg,var(--gold-2),var(--gold-3));
+  color:#241700; font-weight:700;
+  border: 1px solid rgba(255,220,120,0.2);
+  box-shadow: 0 10px 30px rgba(255,160,30,0.22);
 }
 .btn.gold:hover { background: linear-gradient(180deg,#ffd98a,var(--gold-3)); }
 
 /* ================ الشريط الجانبي ================ */
 .sidebar { display:flex; flex-direction:column; gap:18px; }
 .panel {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:14px; padding:16px;
-  border:1px solid rgba(255,220,120,0.05);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:14px; padding:16px;
+  border:1px solid rgba(255,220,120,0.05);
 }
 .counter { font-size:28px; color:var(--gold-1); font-weight:800; }
 .history {
-  display:flex; flex-direction:column; gap:8px; max-height:300px; overflow:auto; padding-left:4px;
+  display:flex; flex-direction:column; gap:8px; max-height:300px; overflow:auto; padding-left:4px;
 }
 .history .row {
-  display:flex; justify-content:space-between; padding:10px; border-radius:8px;
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.03);
-  font-size: 14px; color: rgba(255,255,255,0.8);
+  display:flex; justify-content:space-between; padding:10px; border-radius:8px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.03);
+  font-size: 14px; color: rgba(255,255,255,0.8);
 }
 
 /* ================ النوافذ المنبثقة (Modals) ================ */
 .modal-backdrop {
-  position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:9999;
-  background:rgba(0,0,0,0.85); backdrop-filter: blur(4px);
-  animation: fadeIn 0.3s ease;
+  position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:9999;
+  background:rgba(0,0,0,0.85); backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 .modal {
-  width:90%; max-width:560px; /* تم تكبيره قليلاً للإعدادات */
-  background:linear-gradient(180deg,#1a1610, #0f0d0a);
-  color:var(--txt); border-radius:18px; padding:24px;
-  border: 1px solid var(--gold-3);
-  text-align:right; /* لليمين لخانات الإعدادات */
-  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-  max-height: 90vh;
-  overflow-y: auto;
+  width:90%; max-width:560px; /* تم تكبيره قليلاً للإعدادات */
+  background:linear-gradient(180deg,#1a1610, #0f0d0a);
+  color:var(--txt); border-radius:18px; padding:24px;
+  border: 1px solid var(--gold-3);
+  text-align:right; /* لليمين لخانات الإعدادات */
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 /* مودال الفائز */
 .winner-modal { text-align:center; }
 .winner-modal .win-num {
-  font-size:82px; font-weight:900; color:#5a3900; margin:10px 0; letter-spacing:4px;
+  font-size:82px; font-weight:900; color:#5a3900; margin:10px 0; letter-spacing:4px;
 }
 .win-text { font-size: 22px; font-weight: 800; color: #d68c04; margin-bottom: 10px; }
 .cta-text { font-size: 16px; color: #533b11; font-weight: 700; margin-bottom: 20px; }
@@ -231,23 +231,23 @@ body{
 
 /* ================ مودال الإعدادات ================ */
 .settings-input, .settings-select {
-  width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--gold-2);
-  background: rgba(0,0,0,0.3); color: #fff; font-family: inherit; margin-bottom: 12px;
-  font-size: 16px; direction: rtl;
+  width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--gold-2);
+  background: rgba(0,0,0,0.3); color: #fff; font-family: inherit; margin-bottom: 12px;
+  font-size: 16px; direction: rtl;
 }
 .settings-tools { display:none; flex-direction: column; gap: 15px; }
 .setting-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--glass-border);
 }
 .setting-row label { font-weight: 700; color: var(--gold-1); }
 .setting-row input[type="text"], .setting-row input[type="password"] {
-  width: 65%; text-align: left; direction: ltr; background: rgba(0,0,0,0.2);
-  border-color: rgba(255,255,255,0.2);
+  width: 65%; text-align: left; direction: ltr; background: rgba(0,0,0,0.2);
+  border-color: rgba(255,255,255,0.2);
 }
 .setting-row .btn { flex: auto; }
 
@@ -255,12 +255,12 @@ body{
 .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
 .switch input { opacity: 0; width: 0; height: 0; }
 .slider {
-  position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #333; transition: .4s; border-radius: 28px;
+  position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #333; transition: .4s; border-radius: 28px;
 }
 .slider:before {
-  position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px;
-  background-color: white; transition: .4s; border-radius: 50%;
+  position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px;
+  background-color: white; transition: .4s; border-radius: 50%;
 }
 input:checked + .slider { background-color: var(--gold-3); }
 input:checked + .slider:before { transform: translateX(22px); }
@@ -363,138 +363,139 @@ input:checked + .slider:before { transform: translateX(22px); }
 <canvas id="confetti"></canvas>
 
 <div class="main-giveaway-title" id="giveawayTitle">
-  مسابقة كرتونك عندي علي 20 دولار = 1000 جنيه مصري
+  مسابقة كرتونك عندي علي 20 دولار = 1000 جنيه مصري
 </div>
 
 <div class="app">
 
-  <section class="card">
-    <div class="header">
-      <div class="logo-wrap">
-        <img src="channels4_profile.jpg" alt="Logo" class="logo" id="logoImg" />
-        <div>
-          <div class="title" id="mainTitle">CartonKandy</div>
-          <div class="subtitle" id="mainSubtitle">شارك واربح - اضغط "اخرج الرقم"</div>
-        </div>
-      </div>
-      
-      <button class="menu-btn" id="settingsBtn" title="الإعدادات">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
-    </div>
+  <section class="card">
+    <div class="header">
+      <div class="logo-wrap">
+        <img src="channels4_profile.jpg" alt="Logo" class="logo" id="logoImg" />
+        <div>
+          <div class="title" id="mainTitle">CartonKandy</div>
+          <div class="subtitle" id="mainSubtitle">شارك واربح - اضغط "اخرج الرقم"</div>
+        </div>
+      </div>
+      
+      <button class="menu-btn" id="settingsBtn" title="الإعدادات">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
 
-    <div class="lottery">
-      <div class="lottery-left">
-        <div class="slots" id="slotsArea">
-          <div class="slot"><div class="slot-reel" id="reel0"></div></div>
-          <div class="slot"><div class="slot-reel" id="reel1"></div></div>
-          <div class="slot"><div class="slot-reel" id="reel2"></div></div>
-        </div>
-        
-        <div class="final-number-display center" id="finalNumberDisplay">---</div>
-        
-        <div style="font-size:12px; color:rgba(255,255,255,0.5); text-align:center; margin-top: 10px" id="announce">جاهز للسحب...</div>
-      </div>
+    <div class="lottery">
+      <div class="lottery-left">
+        <div class="slots" id="slotsArea">
+          <div class="slot"><div class="slot-reel" id="reel0"></div></div>
+          <div class="slot"><div class="slot-reel" id="reel1"></div></div>
+          <div class="slot"><div class="slot-reel" id="reel2"></div></div>
+        </div>
+        
+        <div class="final-number-display center" id="finalNumberDisplay">---</div>
+        
+        <div style="font-size:12px; color:rgba(255,255,255,0.5); text-align:center; margin-top: 10px" id="announce">جاهز للسحب...</div>
+      </div>
 
-      <div class="lottery-right">
-        <div class="controls">
-          <button class="btn gold" id="drawBtn">اخرج الرقم</button>
-          <button class="btn" id="copyBtn">نسخ الرقم</button>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div class="lottery-right">
+        <div class="controls">
+          <button class="btn gold" id="drawBtn">اخرج الرقم</button>
+          <button class="btn" id="copyBtn">نسخ الرقم</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <aside class="sidebar">
-    <div class="panel">
-      <div style="display:flex;align-items:center;justify-content:space-between;">
-        <div style="font-weight:800">المشاركون</div>
-        <div class="counter" id="participants">0</div>
-      </div>
-    </div>
-    <div class="panel">
-      <div style="font-weight:800; margin-bottom:12px">سجل السحوبات</div>
-      <div class="history" id="history"></div>
-    </div>
-  </aside>
+  <aside class="sidebar">
+    <div class="panel">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-weight:800">المشاركون</div>
+        <div class="counter" id="participants">0</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div style="font-weight:800; margin-bottom:12px">سجل السحوبات</div>
+      <div class="history" id="history"></div>
+    </div>
+  </aside>
 </div>
 
 <div class="modal-backdrop" id="winModal">
-  <div class="modal winner-modal" style="background:linear-gradient(180deg,#fffaf5, #fff5e8); color:#3b2b05; border-color:#fff;">
-    <div class="win-text">مبروك!</div>
-    <div class="win-num" id="winNum">000</div>
-    <div class="win-prize" id="winPrizeText">لقد فزت بـ 20 دولار!</div>
-    <div class="cta-text">اذهب الان واكتب رقمك في التعليقات</div>
-    
-    <button class="btn" id="copyWinNumBtn" style="background: rgba(0,0,0,0.05); color: #333; margin-bottom: 10px; width:100%">نسخ الرقم</button>
-    
-    <button class="btn gold" id="closeWinModal" style="width:100%">اغلاق</button>
-  </div>
+  <div class="modal winner-modal" style="background:linear-gradient(180deg,#fffaf5, #fff5e8); color:#3b2b05; border-color:#fff;">
+    <div class="win-text">مبروك!</div>
+    <div class="win-num" id="winNum">000</div>
+    <div class="win-prize" id="winPrizeText">لقد فزت بـ 20 دولار!</div>
+    <div class="cta-text">اذهب الان واكتب رقمك في التعليقات</div>
+    
+    <button class="btn" id="copyWinNumBtn" style="background: rgba(0,0,0,0.05); color: #333; margin-bottom: 10px; width:100%">نسخ الرقم</button>
+    
+    <button class="btn gold" id="closeWinModal" style="width:100%">اغلاق</button>
+  </div>
 </div>
 
 <div class="modal-backdrop" id="settingsModal">
-  <div class="modal">
-    <div style="font-size:20px; font-weight:700; margin-bottom:16px; color:var(--gold-2); text-align:center">إعدادات الموقع</div>
-    
-    <div id="loginScreen" style="text-align:center">
-      <div style="margin-bottom:10px; font-size:14px;">ادخل كلمة المرور للدخول للوحة التحكم</div>
-      <input type="password" id="passInput" class="settings-input" placeholder="كلمة السر" />
-      <button class="btn gold" id="loginBtn" style="width:100%">دخول</button>
-      <div id="loginError" style="color:red; font-size:12px; margin-top:8px; display:none">كلمة المرور خاطئة</div>
-.
-    <div id="toolsScreen" class="settings-tools">
-      
-      <div class="setting-row">
-        <label for="titleInput">العنوان الرئيسي</label>
-        <input type="text" id="titleInput" class="settings-input" style="margin:0; width: 60%;"/>
-      </div>
-      <div class="setting-row">
-        <label for="subtitleInput">العنوان الفرعي</label>
-        <input type="text" id="subtitleInput" class="settings-input" style="margin:0; width: 60%;"/>
-      </div>
-      <div class="setting-row">
-        <label for="prizeInput">نص الجائزة</label>
-        <input type="text" id="prizeInput" class="settings-input" style="margin:0; width: 60%;"/>
-      </div>
-      
-      <div class="sep"></div>
+  <div class="modal">
+    <div style="font-size:20px; font-weight:700; margin-bottom:16px; color:var(--gold-2); text-align:center">إعدادات الموقع</div>
+    
+    <div id="loginScreen" style="text-align:center">
+      <div style="margin-bottom:10px; font-size:14px;">ادخل كلمة المرور للدخول للوحة التحكم</div>
+      <input type="password" id="passInput" class="settings-input" placeholder="كلمة السر" />
+      <button class="btn gold" id="loginBtn" style="width:100%">دخول</button>
+      <div id="loginError" style="color:red; font-size:12px; margin-top:8px; display:none">كلمة المرور خاطئة</div>
+    </div>
 
-      <div class="setting-row">
-        <label>تفعيل الأصوات</label>
-        <label class="switch"><input type="checkbox" id="soundToggle"><span class="slider"></span></label>
-      </div>
-      <div class="setting-row">
-        <label>تفعيل القصاصات</label>
-        <label class="switch"><input type="checkbox" id="confettiToggle"><span class="slider"></span></label>
-      </div>
+    <div id="toolsScreen" class="settings-tools">
+      
+      <div class="setting-row">
+        <label for="titleInput">العنوان الرئيسي</label>
+        <input type="text" id="titleInput" class="settings-input" style="margin:0; width: 60%;"/>
+      </div>
+      <div class="setting-row">
+        <label for="subtitleInput">العنوان الفرعي</label>
+        <input type="text" id="subtitleInput" class="settings-input" style="margin:0; width: 60%;"/>
+      </div>
+      <div class="setting-row">
+        <label for="prizeInput">نص الجائزة</label>
+        <input type="text" id="prizeInput" class="settings-input" style="margin:0; width: 60%;"/>
+      </div>
+      
+      <div class="sep"></div>
 
-      <div class="sep"></div>
+      <div class="setting-row">
+        <label>تفعيل الأصوات</label>
+        <label class="switch"><input type="checkbox" id="soundToggle"><span class="slider"></span></label>
+      </div>
+      <div class="setting-row">
+        <label>تفعيل القصاصات</label>
+        <label class="switch"><input type="checkbox" id="confettiToggle"><span class="slider"></span></label>
+      </div>
 
-      <div class="setting-row">
-        <label for="passChangeInput">تغيير كلمة السر</label>
-        <input type="password" id="passChangeInput" class="settings-input" placeholder="اتركها فارغة لعدم التغيير" style="margin:0; width: 60%;"/>
-      </div>
-      <button class="btn gold" id="saveSettingsBtn">حفظ الإعدادات</button>
-      
-      <div class="sep"></div>
+      <div class="sep"></div>
 
-      <div style="display:flex; gap: 10px; width: 100%">
-        <button class="btn" id="clearHistoryBtn" style="border:1px solid rgba(255,255,255,0.2); flex: 1;">مسح السجل</button>
-        <button class="btn" id="clearParticipantsBtn" style="border:1px solid rgba(255,255,255,0.2); flex: 1;">تصفير المشاركين</button>
-      </div>
-      
-      <button class="btn" id="exportBtn" style="border:1px solid rgba(255,255,255,0.2)">تصدير سجل السحب (ملف نصي)</button>
-      <button class="btn" id="resetBtn" style="background:rgba(255,50,50,0.2); color:#ffabab; border:1px solid rgba(255,50,50,0.3)">إعادة ضبط المصنع (حذف الكل)</button>
-    </div>
+      <div class="setting-row">
+        <label for="passChangeInput">تغيير كلمة السر</label>
+        <input type="password" id="passChangeInput" class="settings-input" placeholder="اتركها فارغة لعدم التغيير" style="margin:0; width: 60%;"/>
+      </div>
+      <button class="btn gold" id="saveSettingsBtn">حفظ الإعدادات</button>
+      
+      <div class="sep"></div>
 
-    <button class="btn" id="closeSettings" style="margin-top:18px; background:transparent; border:1px solid rgba(255,255,255,0.1)">إلغاء</button>
-  </div>
+      <div style="display:flex; gap: 10px; width: 100%">
+        <button class="btn" id="clearHistoryBtn" style="border:1px solid rgba(255,255,255,0.2); flex: 1;">مسح السجل</button>
+        <button class="btn" id="clearParticipantsBtn" style="border:1px solid rgba(255,255,255,0.2); flex: 1;">تصفير المشاركين</button>
+      </div>
+      
+      <button class="btn" id="exportBtn" style="border:1px solid rgba(255,255,255,0.2)">تصدير سجل السحب (ملف نصي)</button>
+      <button class="btn" id="resetBtn" style="background:rgba(255,50,50,0.2); color:#ffabab; border:1px solid rgba(255,50,50,0.3)">إعادة ضبط المصنع (حذف الكل)</button>
+    </div>
+
+    <button class="btn" id="closeSettings" style="margin-top:18px; background:transparent; border:1px solid rgba(255,255,255,0.1)">إلغاء</button>
+  </div>
 </div>
 
 <script>
 /* ============================
-   المتغيرات والحالة
-   ============================ */
+  المتغيرات والحالة
+  ============================ */
 const $ = (s) => document.getElementById(s);
 const $$ = (s) => document.querySelectorAll(s);
 
@@ -522,423 +523,423 @@ const loginError = $('loginError');
 
 // حالة التطبيق
 let state = {
-  participants: 0,
-  history: [],
-  last: null,
-  hasParticipated: false,
-  secret: "zozasofsa12345678901",
-  settings: {
-    title: "CartonKandy",
-    subtitle: "شارك واربح - اضغط \"اخرج الرقم\"",
-    prize: "مسابقة كرتونك عندي علي 20 دولار = 1000 جنيه مصري",
-    soundOn: true,
-    confettiOn: true,
-  }
+  participants: 0,
+  history: [],
+  last: null,
+  hasParticipated: false,
+  secret: "zozasofsa12345678901",
+  settings: {
+    title: "CartonKandy",
+    subtitle: "شارك واربح - اضغط \"اخرج الرقم\"",
+    prize: "مسابقة كرتونك عندي علي 20 دولار = 1000 جنيه مصري",
+    soundOn: true,
+    confettiOn: true,
+  }
 };
 
 // المؤثرات الصوتية
 let audioCtx;
 let spinSound, winSound;
 function initAudio() {
-  if (audioCtx) return;
-  try {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    
-    // صوت دوران
-    spinSound = audioCtx.createOscillator();
-    let gainNode = audioCtx.createGain();
-    spinSound.type = 'sawtooth';
-    spinSound.frequency.setValueAtTime(100, audioCtx.currentTime);
-    spinSound.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 2.5);
-    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.5);
-    spinSound.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-    
-    // صوت فوز
-    winSound = () => {
-      if (!state.settings.soundOn) return;
-      let o = audioCtx.createOscillator();
-      let g = audioCtx.createGain();
-      o.type = 'triangle';
-      o.frequency.setValueAtTime(600, audioCtx.currentTime);
-      o.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.2);
-      g.gain.setValueAtTime(0.2, audioCtx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
-      o.connect(g); g.connect(audioCtx.destination);
-      o.start(); o.stop(audioCtx.currentTime + 0.3);
-    };
+  if (audioCtx) return;
+  try {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    // صوت دوران
+    spinSound = audioCtx.createOscillator();
+    let gainNode = audioCtx.createGain();
+    spinSound.type = 'sawtooth';
+    spinSound.frequency.setValueAtTime(100, audioCtx.currentTime);
+    spinSound.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 2.5);
+    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.5);
+    spinSound.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    
+    // صوت فوز
+    winSound = () => {
+      if (!state.settings.soundOn) return;
+      let o = audioCtx.createOscillator();
+      let g = audioCtx.createGain();
+      o.type = 'triangle';
+      o.frequency.setValueAtTime(600, audioCtx.currentTime);
+      o.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.2);
+      g.gain.setValueAtTime(0.2, audioCtx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start(); o.stop(audioCtx.currentTime + 0.3);
+    };
 
-  } catch(e) {
-    console.warn("Web Audio API is not supported in this browser");
-  }
+  } catch(e) {
+    console.warn("Web Audio API is not supported in this browser");
+  }
 }
 // تشغيل صوت الدوران (يجب إعادة إنشائه كل مرة)
 function playSpinSound() {
-  if (!audioCtx || !state.settings.soundOn) return;
-  let o = audioCtx.createOscillator();
-  let g = audioCtx.createGain();
-  o.type = 'sawtooth';
-  o.frequency.setValueAtTime(120, audioCtx.currentTime);
-  o.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 2.8);
-  g.gain.setValueAtTime(0.15, audioCtx.currentTime);
-  g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.8);
-  o.connect(g); g.connect(audioCtx.destination);
-  o.start(); o.stop(audioCtx.currentTime + 2.8);
+  if (!audioCtx || !state.settings.soundOn) return;
+  let o = audioCtx.createOscillator();
+  let g = audioCtx.createGain();
+  o.type = 'sawtooth';
+  o.frequency.setValueAtTime(120, audioCtx.currentTime);
+  o.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 2.8);
+  g.gain.setValueAtTime(0.15, audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.8);
+  o.connect(g); g.connect(audioCtx.destination);
+  o.start(); o.stop(audioCtx.currentTime + 2.8);
 }
 
 /* ============================
-   تحميل وحفظ الحالة
-   ============================ */
+  تحميل وحفظ الحالة
+  ============================ */
 function loadState(){
-  try {
-    const p = localStorage.getItem('ck_participants');
-    const h = localStorage.getItem('ck_history');
-    const s = localStorage.getItem('ck_settings');
-    const sec = localStorage.getItem('ck_secret');
-    const hp = localStorage.getItem('ck_hasParticipated');
+  try {
+    const p = localStorage.getItem('ck_participants');
+    const h = localStorage.getItem('ck_history');
+    const s = localStorage.getItem('ck_settings');
+    const sec = localStorage.getItem('ck_secret');
+    const hp = localStorage.getItem('ck_hasParticipated');
 
-    state.participants = p ? parseInt(p, 10) : 0;
-    state.history = h ? JSON.parse(h) : [];
-    state.hasParticipated = hp === 'true';
-    if(s) state.settings = {...state.settings, ...JSON.parse(s)};
-    if(sec) state.secret = sec;
-    
-    applySettings();
-    updateUI();
-  } catch(e) { console.warn('load state failed', e); }
+    state.participants = p ? parseInt(p, 10) : 0;
+    state.history = h ? JSON.parse(h) : [];
+    state.hasParticipated = hp === 'true';
+    if(s) state.settings = {...state.settings, ...JSON.parse(s)};
+    if(sec) state.secret = sec;
+    
+    applySettings();
+    updateUI();
+  } catch(e) { console.warn('load state failed', e); }
 }
 
 function saveState(){
-  localStorage.setItem('ck_participants', state.participants);
-  localStorage.setItem('ck_history', JSON.stringify(state.history));
+  localStorage.setItem('ck_participants', state.participants);
+  localStorage.setItem('ck_history', JSON.stringify(state.history));
 }
 function saveSettings() {
-  localStorage.setItem('ck_settings', JSON.stringify(state.settings));
-  localStorage.setItem('ck_secret', state.secret);
-  alert('تم حفظ الإعدادات');
+  localStorage.setItem('ck_settings', JSON.stringify(state.settings));
+  localStorage.setItem('ck_secret', state.secret);
+  alert('تم حفظ الإعدادات');
 }
 
 function applySettings() {
-  $('giveawayTitle').textContent = state.settings.prize;
-  $('mainTitle').textContent = state.settings.title;
-  $('mainSubtitle').textContent = state.settings.subtitle;
-  $('winPrizeText').textContent = `لقد ربحت في ${state.settings.title}!`;
-  // تطبيق الإعدادات في المودال
-  $('titleInput').value = state.settings.title;
-  $('subtitleInput').value = state.settings.subtitle;
-  $('prizeInput').value = state.settings.prize;
-  $('soundToggle').checked = state.settings.soundOn;
-  $('confettiToggle').checked = state.settings.confettiOn;
+  $('giveawayTitle').textContent = state.settings.prize;
+  $('mainTitle').textContent = state.settings.title;
+  $('mainSubtitle').textContent = state.settings.subtitle;
+  $('winPrizeText').textContent = `لقد ربحت في ${state.settings.title}!`;
+  // تطبيق الإعدادات في المودال
+  $('titleInput').value = state.settings.title;
+  $('subtitleInput').value = state.settings.subtitle;
+  $('prizeInput').value = state.settings.prize;
+  $('soundToggle').checked = state.settings.soundOn;
+  $('confettiToggle').checked = state.settings.confettiOn;
 }
 
 function updateUI(){
-  participantsEl.textContent = state.participants;
-  historyEl.innerHTML='';
-  if(state.history.length===0){
-    historyEl.innerHTML = '<div class="row" style="justify-content:center">لا يوجد سجل</div>';
-    return;
-  }
-  state.history.forEach(item => {
-    const row = document.createElement('div');
-    row.className='row';
-    const d = new Date(item.time).toLocaleTimeString('ar-EG');
-    row.innerHTML = `<span>${item.num}</span><span style="font-size:11px; opacity:0.6">${d}</span>`;
-    historyEl.appendChild(row);
-  });
+  participantsEl.textContent = state.participants;
+  historyEl.innerHTML='';
+  if(state.history.length===0){
+    historyEl.innerHTML = '<div class="row" style="justify-content:center">لا يوجد سجل</div>';
+    return;
+  }
+  state.history.forEach(item => {
+    const row = document.createElement('div');
+    row.className='row';
+    const d = new Date(item.time).toLocaleTimeString('ar-EG');
+    row.innerHTML = `<span>${item.num}</span><span style="font-size:11px; opacity:0.6">${d}</span>`;
+    historyEl.appendChild(row);
+  });
 }
 
 /* ============================
-   منطق الأنيميشن الجديد (البكرات)
-   ============================ */
+  منطق الأنيميشن الجديد (البكرات)
+  ============================ */
 const DIGIT_HEIGHT = 80; // ارتفاع كل رقم (يجب أن يطابق CSS)
 const NUM_DIGITS = 10;
 const REEL_SPINS = 5; // عدد اللفات الكاملة قبل التوقف
 
 function setupReels() {
-  reels.forEach(reel => {
-    reel.innerHTML = ''; // إفراغ البكرة
-    // إنشاء 5 مجموعات من 0-9
-    for (let k = 0; k < REEL_SPINS; k++) {
-      for (let i = 0; i < NUM_DIGITS; i++) {
-        const digitEl = document.createElement('div');
-        digitEl.textContent = i;
-        reel.appendChild(digitEl);
-      }
-    }
-  });
+  reels.forEach(reel => {
+    reel.innerHTML = ''; // إفراغ البكرة
+    // إنشاء 5 مجموعات من 0-9
+    for (let k = 0; k < REEL_SPINS; k++) {
+      for (let i = 0; i < NUM_DIGITS; i++) {
+        const digitEl = document.createElement('div');
+        digitEl.textContent = i;
+        reel.appendChild(digitEl);
+      }
+    }
+  });
 }
 
 function rollSlots(target){
-  initAudio(); // تأكد من تشغيل الصوت
-  playSpinSound();
-  
-  const s = String(target).padStart(3,'0').split('');
-  
-  // إخفاء الرقم النهائي وإظهار البكرات
-  finalNumberDisplay.style.display = 'none';
-  slotsArea.style.display = 'flex';
-  
-  reels.forEach((reel, idx) => {
-    const targetDigit = parseInt(s[idx]);
-    
-    // الحسابات: (عدد اللفات * 10 أرقام * ارتفاع الرقم) + (الرقم المستهدف * ارتفاع الرقم)
-    // نجعلها تتوقف في آخر مجموعة أرقام
-    const targetPosition = ((REEL_SPINS - 1) * NUM_DIGITS * DIGIT_HEIGHT) + (targetDigit * DIGIT_HEIGHT);
-    const spinDuration = 2.5 + idx * 0.5; // 2.5s, 3.0s, 3.5s
-    
-    // 1. إعادة تعيين فورية للبداية (بدون أنيميشن)
-    reel.style.transition = 'none';
-    reel.style.transform = 'translateY(0)';
-    
-    // 2. فرض إعادة طلاء (repaint)
-    void reel.offsetWidth; 
-    
-    // 3. تطبيق الأنيميشن والتحريك للمكان النهائي
-    reel.style.transition = `transform ${spinDuration}s cubic-bezier(0.25, 1, 0.5, 1)`;
-    reel.style.transform = `translateY(-${targetPosition}px)`;
-  });
+  initAudio(); // تأكد من تشغيل الصوت
+  playSpinSound();
+  
+  const s = String(target).padStart(3,'0').split('');
+  
+  // إخفاء الرقم النهائي وإظهار البكرات
+  finalNumberDisplay.style.display = 'none';
+  slotsArea.style.display = 'flex';
+  
+  reels.forEach((reel, idx) => {
+    const targetDigit = parseInt(s[idx]);
+    
+    // الحسابات: (عدد اللفات * 10 أرقام * ارتفاع الرقم) + (الرقم المستهدف * ارتفاع الرقم)
+    // نجعلها تتوقف في آخر مجموعة أرقام
+    const targetPosition = ((REEL_SPINS - 1) * NUM_DIGITS * DIGIT_HEIGHT) + (targetDigit * DIGIT_HEIGHT);
+    const spinDuration = 2.5 + idx * 0.5; // 2.5s, 3.0s, 3.5s
+    
+    // 1. إعادة تعيين فورية للبداية (بدون أنيميشن)
+    reel.style.transition = 'none';
+    reel.style.transform = 'translateY(0)';
+    
+    // 2. فرض إعادة طلاء (repaint)
+    void reel.offsetWidth; 
+    
+    // 3. تطبيق الأنيميشن والتحريك للمكان النهائي
+    reel.style.transition = `transform ${spinDuration}s cubic-bezier(0.25, 1, 0.5, 1)`;
+    reel.style.transform = `translateY(-${targetPosition}px)`;
+  });
 }
 
 /* ============================
-   منطق السحب الرئيسي
-   ============================ */
+  منطق السحب الرئيسي
+  ============================ */
 drawBtn.addEventListener('click', function(){
-  drawBtn.disabled = true;
-  drawBtn.textContent = 'جاري السحب...';
-  announceEl.textContent = '...';
-  
-  // التحقق من المشاركة (المنطق الجديد)
-  if (!state.hasParticipated) {
-    state.participants++;
-    localStorage.setItem('ck_participants', state.participants);
-    participantsEl.textContent = state.participants;
-    
-    state.hasParticipated = true;
-    localStorage.setItem('ck_hasParticipated', 'true');
-  }
+  drawBtn.disabled = true;
+  drawBtn.textContent = 'جاري السحب...';
+  announceEl.textContent = '...';
+  
+  // التحقق من المشاركة (المنطق الجديد)
+  if (!state.hasParticipated) {
+    state.participants++;
+    localStorage.setItem('ck_participants', state.participants);
+    participantsEl.textContent = state.participants;
+    
+    state.hasParticipated = true;
+    localStorage.setItem('ck_hasParticipated', 'true');
+  }
 
-  let n;
-  do { n = Math.floor(Math.random()*900) + 100; } while(n === state.last);
-  state.last = n;
+  let n;
+  do { n = Math.floor(Math.random()*900) + 100; } while(n === state.last);
+  state.last = n;
 
-  rollSlots(n);
+  rollSlots(n);
 
-  // الانتظار حتى تتوقف آخر بكرة + 0.5 ثانية
-  setTimeout(()=>{
-    finalNumberDisplay.textContent = n;
-    finalNumberDisplay.style.display = 'block';
-    slotsArea.style.display = 'none'; // إخفاء البكرات
-    
-    announceEl.textContent = 'تم اختيار الرقم!';
-    
-    // حفظ في السجل
-    state.history.unshift({num:n, time: new Date().toISOString()});
-    if(state.history.length>50) state.history.pop(); // زيادة السجل
-    saveState();
-    updateUI();
+  // الانتظار حتى تتوقف آخر بكرة + 0.5 ثانية
+  setTimeout(()=>{
+    finalNumberDisplay.textContent = n;
+    finalNumberDisplay.style.display = 'block';
+    slotsArea.style.display = 'none'; // إخفاء البكرات
+    
+    announceEl.textContent = 'تم اختيار الرقم!';
+    
+    // حفظ في السجل
+    state.history.unshift({num:n, time: new Date().toISOString()});
+    if(state.history.length>50) state.history.pop(); // زيادة السجل
+    saveState();
+    updateUI();
 
-    if (state.settings.confettiOn) confetti.emit(150);
-    winSound();
-    
-    // إظهار الفائز
-    setTimeout(()=>{
-      winNum.textContent = n;
-      winModal.style.display = 'flex';
-      drawBtn.disabled = false;
-      drawBtn.textContent = 'اخرج الرقم';
-    }, 600);
-  }, 3500 + 500); // (آخر بكرة 3.5 ثانية) + 0.5 ثانية
+    if (state.settings.confettiOn) confetti.emit(150);
+    winSound();
+    
+    // إظهار الفائز
+    setTimeout(()=>{
+      winNum.textContent = n;
+      winModal.style.display = 'flex';
+      drawBtn.disabled = false;
+      drawBtn.textContent = 'اخرج الرقم';
+    }, 600);
+  }, 3500 + 500); // (آخر بكرة 3.5 ثانية) + 0.5 ثانية
 });
 
 // زر النسخ الرئيسي
 copyBtn.addEventListener('click', ()=>{
-  const txt = state.last;
-  if(txt && txt !== '---') {
-    navigator.clipboard.writeText(txt).then(() => {
-      copyBtn.textContent = 'تم النسخ!';
-      setTimeout(() => copyBtn.textContent = 'نسخ الرقم', 1500);
-    });
-  }
+  const txt = state.last;
+  if(txt && txt !== '---') {
+    navigator.clipboard.writeText(txt).then(() => {
+      copyBtn.textContent = 'تم النسخ!';
+      setTimeout(() => copyBtn.textContent = 'نسخ الرقم', 1500);
+    });
+  }
 });
 
 // زر النسخ في المودال
 $('copyWinNumBtn').addEventListener('click', (e)=>{
-  const txt = winNum.textContent;
-  const btn = e.target;
-  if(txt && txt !== '---') {
-    navigator.clipboard.writeText(txt).then(() => {
-      btn.textContent = 'تم النسخ بنجاح!';
-      setTimeout(() => btn.textContent = 'نسخ الرقم', 2000);
-    });
-  }
+  const txt = winNum.textContent;
+  const btn = e.target;
+  if(txt && txt !== '---') {
+    navigator.clipboard.writeText(txt).then(() => {
+      btn.textContent = 'تم النسخ بنجاح!';
+      setTimeout(() => btn.textContent = 'نسخ الرقم', 2000);
+    });
+  }
 });
 
 $('closeWinModal').addEventListener('click', ()=> winModal.style.display='none');
 
 /* ============================
-   إعدادات محمية
-   ============================ */
+  إعدادات محمية
+  ============================ */
 settingsBtn.addEventListener('click', ()=>{
-  settingsModal.style.display='flex';
-  loginScreen.style.display = 'block';
-  toolsScreen.style.display = 'none';
-  passInput.value = '';
-  loginError.style.display='none';
-  // تحميل الإعدادات الحالية في النموذج
-  applySettings();
+  settingsModal.style.display='flex';
+  loginScreen.style.display = 'block';
+  toolsScreen.style.display = 'none';
+  passInput.value = '';
+  loginError.style.display='none';
+  // تحميل الإعدادات الحالية في النموذج
+  applySettings();
 });
 
 $('closeSettings').addEventListener('click', ()=> settingsModal.style.display='none');
 
 loginBtn.addEventListener('click', ()=>{
-  if(passInput.value === state.secret){
-    loginScreen.style.display = 'none';
-    toolsScreen.style.display = 'flex';
-  } else {
-    loginError.style.display = 'block';
-  }
+  if(passInput.value === state.secret){
+    loginScreen.style.display = 'none';
+    toolsScreen.style.display = 'flex';
+  } else {
+    loginError.style.display = 'block';
+  }
 });
 
 // حفظ الإعدادات
 $('saveSettingsBtn').addEventListener('click', () => {
-  state.settings.title = $('titleInput').value;
-  state.settings.subtitle = $('subtitleInput').value;
-  state.settings.prize = $('prizeInput').value;
-  state.settings.soundOn = $('soundToggle').checked;
-  state.settings.confettiOn = $('confettiToggle').checked;
-  
-  const newPass = $('passChangeInput').value;
-  if (newPass && newPass.length > 5) {
-    state.secret = newPass;
-    $('passChangeInput').value = '';
-  }
-  
-  saveSettings();
-  applySettings();
-  settingsModal.style.display = 'none';
+  state.settings.title = $('titleInput').value;
+  state.settings.subtitle = $('subtitleInput').value;
+  state.settings.prize = $('prizeInput').value;
+  state.settings.soundOn = $('soundToggle').checked;
+  state.settings.confettiOn = $('confettiToggle').checked;
+  
+  const newPass = $('passChangeInput').value;
+  if (newPass && newPass.length > 5) {
+    state.secret = newPass;
+    $('passChangeInput').value = '';
+  }
+  
+  saveSettings();
+  applySettings();
+  settingsModal.style.display = 'none';
 });
 
 /* أدوات الإدارة */
 $('clearHistoryBtn').addEventListener('click', () => {
-  if (confirm('هل تريد مسح سجل السحوبات فقط؟')) {
-    state.history = [];
-    saveState(); updateUI();
-  }
+  if (confirm('هل تريد مسح سجل السحوبات فقط؟')) {
+    state.history = [];
+    saveState(); updateUI();
+  }
 });
 $('clearParticipantsBtn').addEventListener('click', () => {
-  if (confirm('هل تريد تصفير عداد المشاركين؟ (لن يحذف الزوار الذين شاركوا)')) {
-    state.participants = 0;
-    saveState(); updateUI();
-  }
+  if (confirm('هل تريد تصفير عداد المشاركين؟ (لن يحذف الزوار الذين شاركوا)')) {
+    state.participants = 0;
+    saveState(); updateUI();
+  }
 });
 
 $('resetBtn').addEventListener('click', ()=>{
-  if(confirm('تحذير: سيتم حذف جميع البيانات والإعدادات والمشاركين. هل أنت متأكد؟')){
-    localStorage.removeItem('ck_participants');
-    localStorage.removeItem('ck_history');
-    localStorage.removeItem('ck_settings');
-    localStorage.removeItem('ck_secret');
-    localStorage.removeItem('ck_hasParticipated');
-    // إعادة تحميل الصفحة للضبط
-    location.reload();
-  }
+  if(confirm('تحذير: سيتم حذف جميع البيانات والإعدادات والمشاركين. هل أنت متأكد؟')){
+    localStorage.removeItem('ck_participants');
+    localStorage.removeItem('ck_history');
+    localStorage.removeItem('ck_settings');
+    localStorage.removeItem('ck_secret');
+    localStorage.removeItem('ck_hasParticipated');
+    // إعادة تحميل الصفحة للضبط
+    location.reload();
+  }
 });
 
 $('exportBtn').addEventListener('click', ()=>{
-  const text = state.history.map(h=> `الرقم: ${h.num} | الوقت: ${new Date(h.time).toLocaleString('ar-EG')}`).join('\n');
-  const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'مسابقة_سجل.txt';
-  a.click();
+  const text = state.history.map(h=> `الرقم: ${h.num} | الوقت: ${new Date(h.time).toLocaleString('ar-EG')}`).join('\n');
+  const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'مسابقة_سجل.txt';
+  a.click();
 });
 
 /* ============================
-   القصاصات (Confetti) المحسّنة
-   ============================ */
+  القصاصات (Confetti) المحسّنة
+  ============================ */
 const confetti = {
-  canvas: $('confetti'),
-  ctx: $('confetti').getContext('2d'),
-  pieces: [],
-  running: false,
-  colors: ['#ffe6a6', '#ffd166', '#ffb703', '#ffffff', '#fff9ef'],
-  
-  emit(count = 100){
-    if (!this.canvas) return;
-    this.canvas.style.display='block';
-    this.running = true;
-    this.pieces = [];
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
-    
-    for(let i=0; i<count; i++){
-      this.pieces.push({
-        x: Math.random() * this.canvas.width,
-        y: -20 - Math.random() * 100,
-        w: 10 + Math.random() * 10,
-        h: 6 + Math.random() * 6,
-        vx: (Math.random() - 0.5) * 8,
-        vy: Math.random() * 5 + 3,
-        rot: Math.random() * 360,
-        rotSpeed: (Math.random() - 0.5) * 10,
-        color: this.colors[Math.floor(Math.random() * this.colors.length)],
-        opacity: 1
-      });
-    }
-    if (!this.looping) this.loop();
-  },
-  
-  loop() {
-    this.looping = true;
-    this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
-    
-    this.pieces.forEach((p, i) => {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.rot += p.rotSpeed;
-      p.opacity = Math.max(0, p.opacity - 0.01);
-      
-      this.ctx.save();
-      this.ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
-      this.ctx.rotate(p.rot * Math.PI / 180);
-      this.ctx.fillStyle = p.color;
-      this.ctx.globalAlpha = p.opacity;
-      this.ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-      this.ctx.restore();
-      
-      if (p.y > this.canvas.height || p.opacity === 0) {
-        this.pieces.splice(i, 1);
-      }
-    });
-    
-    if(this.pieces.length > 0) {
-      requestAnimationFrame(() => this.loop());
-    } else {
-      this.running = false;
-      this.looping = false;
-      setTimeout(() => this.canvas.style.display='none', 500);
-    }
-  }
+  canvas: $('confetti'),
+  ctx: $('confetti').getContext('2d'),
+  pieces: [],
+  running: false,
+  colors: ['#ffe6a6', '#ffd166', '#ffb703', '#ffffff', '#fff9ef'],
+  
+  emit(count = 100){
+    if (!this.canvas) return;
+    this.canvas.style.display='block';
+    this.running = true;
+    this.pieces = [];
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+    
+    for(let i=0; i<count; i++){
+      this.pieces.push({
+        x: Math.random() * this.canvas.width,
+        y: -20 - Math.random() * 100,
+        w: 10 + Math.random() * 10,
+        h: 6 + Math.random() * 6,
+        vx: (Math.random() - 0.5) * 8,
+        vy: Math.random() * 5 + 3,
+        rot: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 10,
+        color: this.colors[Math.floor(Math.random() * this.colors.length)],
+        opacity: 1
+      });
+    }
+    if (!this.looping) this.loop();
+  },
+  
+  loop() {
+    this.looping = true;
+    this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+    
+    this.pieces.forEach((p, i) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.rotSpeed;
+      p.opacity = Math.max(0, p.opacity - 0.01);
+      
+      this.ctx.save();
+      this.ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
+      this.ctx.rotate(p.rot * Math.PI / 180);
+      this.ctx.fillStyle = p.color;
+      this.ctx.globalAlpha = p.opacity;
+      this.ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      this.ctx.restore();
+      
+      if (p.y > this.canvas.height || p.opacity === 0) {
+        this.pieces.splice(i, 1);
+      }
+    });
+    
+    if(this.pieces.length > 0) {
+      requestAnimationFrame(() => this.loop());
+    } else {
+      this.running = false;
+      this.looping = false;
+      setTimeout(() => this.canvas.style.display='none', 500);
+    }
+  }
 };
 window.addEventListener('resize', () => {
-  if (confetti.canvas) {
-    confetti.canvas.width = window.innerWidth;
-    confetti.canvas.height = window.innerHeight;
-  }
+  if (confetti.canvas) {
+    confetti.canvas.width = window.innerWidth;
+    confetti.canvas.height = window.innerHeight;
+  }
 });
 
 // ============================
 // بدء التشغيل
 // ============================
 window.addEventListener('load', ()=>{
-  setupReels(); // تجهيز بكرات الأرقام
-  loadState(); // تحميل البيانات المحفوظة
-  
-  // ضبط البكرات على --- في البداية
-  finalNumberDisplay.textContent = '---';
-  finalNumberDisplay.style.display = 'block';
-  slotsArea.style.display = 'none';
+  setupReels(); // تجهيز بكرات الأرقام
+  loadState(); // تحميل البيانات المحفوظة
+  
+  // ضبط البكرات على --- في البداية
+  finalNumberDisplay.textContent = '---';
+  finalNumberDisplay.style.display = 'block';
+  slotsArea.style.display = 'none';
 });
 
 </script>
