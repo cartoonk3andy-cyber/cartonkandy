@@ -72,6 +72,12 @@ body{
 @media (max-width:920px){
   .app { grid-template-columns: 1fr; }
   .main-giveaway-title { font-size: 18px; }
+
+  /* تعديل عشان الموبايل يبدأ من فوق */
+  body {
+    justify-content: flex-start; /* <-- ده هيخليها تبدأ من فوق */
+    padding: 20px 15px;      /* <-- هوامش أظبط للموبايل */
+  }
 }
 
 /* ================ الكارت الرئيسي ================ */
@@ -276,13 +282,7 @@ input:checked + .slider:before { transform: translateX(22px); }
 /* ================ تعديلات الموبايل ================ */
 @media (max-width: 600px) {
 
-  /* 1. تقليل هوامش الصفحة عشان نكسب مساحة */
-  body {
-    padding: 15px;
-  }
-  .card {
-    padding: 18px;
-  }
+  /* 1. (تم نقل الهوامش للجزء الأعلي عند 920px) */
 
   /* 2. تعديل الهيدر (اللوجو والعنوان) */
   .header {
