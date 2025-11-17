@@ -63,12 +63,64 @@
     background-color: var(--gold-light);
     color: var(--gold-dark);
   }
+  
+  /* أيقونة السلة والتنبيه */
+  .cart-button {
+    position: relative;
+    font-size: 1.2rem;
+  }
+  .cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    font-size: 0.65rem;
+    padding: 2px 5px;
+    border-radius: 50%;
+  }
 
+  /* شريط البحث */
+  .search-bar {
+    max-width: 400px;
+  }
+  .search-bar .form-control {
+    background-color: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .search-bar .form-control:focus {
+    background-color: rgba(0,0,0,0.3);
+    border-color: var(--gold-main);
+    box-shadow: 0 0 0 0.25rem rgba(255, 183, 3, 0.25);
+    color: #fff;
+  }
+
+  /* أزرار الفلترة */
+  .category-filters .btn {
+    border-radius: 20px;
+    font-size: 0.9rem;
+    padding: 0.3rem 1rem;
+    margin: 0 0.25rem;
+  }
+  .category-filters .btn-secondary {
+    background-color: #333;
+    border-color: #444;
+  }
+  .category-filters .btn-secondary:hover {
+    background-color: #444;
+  }
+  .category-filters .btn-primary {
+    background-color: var(--gold-main);
+    border-color: var(--gold-main);
+    color: var(--gold-dark);
+    font-weight: 700;
+  }
+
+  /* كارت المنتج */
   .product-card {
     background: linear-gradient(180deg, rgba(255,250,230,0.04), rgba(255,245,210,0.02));
     border: 1px solid rgba(255,230,140,0.12);
     backdrop-filter: blur(6px);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
   }
   .product-card:hover {
     transform: translateY(-5px);
@@ -89,7 +141,14 @@
     font-size: 0.9rem;
     margin-inline-start: 8px;
   }
+  .product-card-title {
+    /* لضمان أن العنوان لا يتجاوز سطر واحد */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
+  /* نافذة المودال */
   .modal-content {
     background:linear-gradient(180deg,#1a1610, #0f0d0a);
     border: 1px solid var(--gold-main);
@@ -100,7 +159,24 @@
     border-radius: .375rem;
   }
   
-  /* لوحة التحكم الجديدة */
+  /* سلة المشتريات */
+  .cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .cart-item:last-child { border-bottom: none; }
+  .cart-item-img {
+    width: 60px; height: 60px; object-fit: cover; border-radius: 4px;
+  }
+  .cart-item-title { font-weight: 600; }
+  .cart-item-price { color: var(--gold-light); }
+  .cart-item-quantity { width: 60px; }
+  
+  /* لوحة التحكم */
   #toolsScreen { text-align: right; }
   .product-editor-form {
     background: rgba(0,0,0,0.2);
@@ -117,6 +193,7 @@
   #productList option {
     padding: 8px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
   }
   #productList option:hover {
     background: var(--gold-main);
@@ -132,13 +209,32 @@
       <img src="https://via.placeholder.com/40" id="siteLogo" alt="Logo">
       <span id="siteTitle">متجر المنتجات</span>
     </a>
-    <button class="btn btn-outline-gold" type="button" data-bs-toggle="modal" data-bs-target="#settingsModal">
-      <i class="fas fa-cog"></i> الإعدادات
-    </button>
+    
+    <div class="search-bar mx-auto d-none d-lg-block">
+      <input type="search" class="form-control" id="searchInput" placeholder="ابحث عن منتجك المفضل...">
+    </div>
+
+    <div class="d-flex align-items-center">
+      <button class="btn btn-outline-gold cart-button me-3" type="button" data-bs-toggle="modal" data-bs-target="#cartModal">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="badge text-bg-danger cart-badge" id="cartBadge">0</span>
+      </button>
+      <button class="btn btn-outline-gold" type="button" data-bs-toggle="modal" data-bs-target="#settingsModal">
+        <i class="fas fa-cog"></i>
+      </button>
+    </div>
   </div>
 </nav>
 
 <main class="container">
+  
+  <div class="search-bar mb-3 d-lg-none">
+    <input type="search" class="form-control" id="searchInputMobile" placeholder="ابحث عن منتجك المفضل...">
+  </div>
+
+  <div class="category-filters text-center mb-4" id="categoryFilters">
+    </div>
+
   <div class="row g-4" id="productGrid">
     </div>
 </main>
@@ -155,21 +251,53 @@
           <div class="col-md-6">
             <img src="" class="img-fluid w-100" id="productModalImage" alt="صورة المنتج">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 d-flex flex-column">
             <h3 class="card-price" id="productModalPrice">$0.00 <span class="old-price" id="productModalOldPrice">$0.00</span></h3>
-            <p id="productModalDescription">وصف المنتج الكامل...</p>
+            <p id="productModalDescription" class="flex-grow-1">وصف المنتج الكامل...</p>
             <hr class="border-secondary">
-            <p class="text-white-50 small">لإتمام عملية الشراء، اضغط على الزر وتواصل معنا عبر تيليجرام لإرسال إثبات الدفع وسنقوم بتسليم المنتج فوراً. نحن نقبل أي عملة.</p>
-            <a href="#" id="modalPurchaseLink" class="btn btn-gold btn-lg w-100" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-telegram me-2"></i>
-              إتمام الشراء عبر تيليجرام
-            </a>
+            <p class="text-white-50 small">لإتمام عملية الشراء، تواصل معنا عبر تيليجرام لإرسال إثبات الدفع وسنقوم بتسليم المنتج فوراً. نحن نقبل أي عملة.</p>
+            <div class="d-grid gap-2">
+              <a href="#" id="modalPurchaseLink" class="btn btn-gold btn-lg" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-telegram me-2"></i>
+                شراء هذا المنتج الآن
+              </a>
+              <button class="btn btn-outline-gold" type="button" id="modalAddToCartBtn">
+                <i class="fas fa-cart-plus me-2"></i>
+                أضف إلى السلة
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartModalLabel">سلة المشتريات</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="cartBody">
+        </div>
+      <div class="modal-footer justify-content-between">
+        <div>
+          <h5 class="mb-0">المجموع الكلي: <span class="text-warning" id="cartTotal">$0.00</span></h5>
+        </div>
+        <div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">متابعة التسوق</button>
+          <a href="#" id="cartCheckoutLink" class="btn btn-gold" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-telegram me-2"></i>
+            إتمام الشراء (تيليجرام)
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
@@ -213,7 +341,7 @@
             <div class="col-md-5">
               <label for="productList" class="form-label">المنتجات الحالية</label>
               <select id="productList" class="form-select" size="10" aria-label="قائمة المنتجات">
-                </select>
+              </select>
               <div class="d-flex mt-2">
                 <button class="btn btn-sm btn-success flex-grow-1 me-2" id="btnNewProduct"><i class="fas fa-plus me-1"></i> منتج جديد</button>
                 <button class="btn btn-sm btn-danger flex-grow-1" id="btnDeleteProduct"><i class="fas fa-trash me-1"></i> حذف المحدد</button>
@@ -223,11 +351,18 @@
             <div class="col-md-7">
               <div class="product-editor-form">
                 <h5 id="editorTitle">إضافة منتج جديد</h5>
-                <input type="hidden" id="editorProductId"> <div class="mb-3">
-                  <label for="editorTitleInput" class="form-label">اسم المنتج</label>
-                  <input type="text" id="editorTitleInput" class="form-control">
-                </div>
+                <input type="hidden" id="editorProductId">
                 <div class="row g-3">
+                    <div class="col-md-8">
+                        <label for="editorTitleInput" class="form-label">اسم المنتج</label>
+                        <input type="text" id="editorTitleInput" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="editorCategoryInput" class="form-label">التصنيف</label>
+                        <input type="text" id="editorCategoryInput" class="form-control" placeholder="مثال: برامج">
+                    </div>
+                </div>
+                <div class="row g-3 mt-2">
                   <div class="col-md-6">
                     <label for="editorPriceInput" class="form-label">السعر (بالدولار $)</label>
                     <input type="number" id="editorPriceInput" class="form-control" placeholder="مثال: 5.99">
@@ -270,9 +405,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <script>
-  // ============================
-  //  بدء التطبيق
-  // ============================
   document.addEventListener('DOMContentLoaded', function () {
 
     // ============================
@@ -286,6 +418,9 @@
     const siteLogo = $('siteLogo');
     const productModalEl = $('productModal');
     const productModal = new bootstrap.Modal(productModalEl);
+    const searchInput = $('searchInput');
+    const searchInputMobile = $('searchInputMobile');
+    const categoryFilters = $('categoryFilters');
 
     // عناصر مودال المنتج
     const modalTitle = $('productModalTitle');
@@ -294,6 +429,15 @@
     const modalOldPrice = $('productModalOldPrice');
     const modalDescription = $('productModalDescription');
     const modalPurchaseLink = $('modalPurchaseLink');
+    const modalAddToCartBtn = $('modalAddToCartBtn');
+    
+    // عناصر السلة
+    const cartModalEl = $('cartModal');
+    const cartModal = new bootstrap.Modal(cartModalEl);
+    const cartBody = $('cartBody');
+    const cartBadge = $('cartBadge');
+    const cartTotal = $('cartTotal');
+    const cartCheckoutLink = $('cartCheckoutLink');
     
     // عناصر الإعدادات
     const settingsModalEl = $('settingsModal');
@@ -305,7 +449,7 @@
     const loginError = $('loginError');
     const saveBtn = $('saveBtn');
     
-    // عناصر لوحة التحكم الجديدة (GUI)
+    // عناصر لوحة التحكم (GUI)
     const settingsSiteTitle = $('settingsSiteTitle');
     const settingsSiteLogo = $('settingsSiteLogo');
     const settingsTelegramLink = $('settingsTelegramLink');
@@ -313,6 +457,7 @@
     const editorTitle = $('editorTitle');
     const editorProductId = $('editorProductId');
     const editorTitleInput = $('editorTitleInput');
+    const editorCategoryInput = $('editorCategoryInput'); // جديد
     const editorPriceInput = $('editorPriceInput');
     const editorOldPriceInput = $('editorOldPriceInput');
     const editorImageInput = $('editorImageInput');
@@ -333,18 +478,29 @@
         siteLogo: "https://via.placeholder.com/40",
         telegramLink: "https://t.me/YourUsername"
       },
-      products: [] // ستبدأ فارغة ويتم ملؤها من اللوحة
+      products: [],
+      cart: [] // السلة الجديدة
     };
 
-    // مثال منتج (يظهر لو اللوحة فاضية)
     const exampleProduct = {
-      id: "example1", // ID فريد
+      id: "example1",
       title: "منتج تجريبي (يمكنك حذفه)",
+      category: "تجريبي", // تصنيف جديد
       price: 10.00,
       oldPrice: 15.00,
-      description: "هذا وصف تجريبي للمنتج. يمكنك تعديل كل هذا من لوحة التحكم بعد إدخال كلمة السر.",
+      description: "هذا وصف تجريبي للمنتج. يمكنك تعديل كل هذا من لوحة التحكم.",
       imageUrl: "https://via.placeholder.com/600x400/ffb703/241700?text=Product+1",
-      telegramLink: "" // فارغ لاستخدام الرابط الافتراضي
+      telegramLink: ""
+    };
+    const exampleProduct2 = {
+      id: "example2",
+      title: "منتج تجريبي آخر",
+      category: "برامج", // تصنيف جديد
+      price: 25.00,
+      oldPrice: 0,
+      description: "هذا منتج تجريبي ثاني.",
+      imageUrl: "https://via.placeholder.com/600x400/0d6efd/ffffff?text=Product+2",
+      telegramLink: ""
     };
 
     // ============================
@@ -352,76 +508,122 @@
     // ============================
 
     function loadState() {
-      const savedState = localStorage.getItem('guiStoreState');
+      const savedState = localStorage.getItem('guiStoreState_v2'); // اسم جديد لضمان التحديث
       if (savedState) {
         state = JSON.parse(savedState);
       } else {
-        // إذا كان أول مرة، أضف المنتج التجريبي
         state.products.push(exampleProduct);
+        state.products.push(exampleProduct2);
       }
+      // تحميل السلة
+      const savedCart = localStorage.getItem('guiStoreCart_v2');
+      if (savedCart) {
+        state.cart = JSON.parse(savedCart);
+      }
+      
       applySettings();
-      renderProducts();
-      loadSettingsToPanel(); // تحميل البيانات في لوحة التحكم
+      renderAll(); // دالة جديدة ترسم كل شيء
+      loadSettingsToPanel();
     }
 
     function saveState() {
-      // حفظ الإعدادات العامة من الحقول
       state.settings.siteTitle = settingsSiteTitle.value;
       state.settings.siteLogo = settingsSiteLogo.value;
       state.settings.telegramLink = settingsTelegramLink.value;
       
-      localStorage.setItem('guiStoreState', JSON.stringify(state));
+      localStorage.setItem('guiStoreState_v2', JSON.stringify(state));
+      localStorage.setItem('guiStoreCart_v2', JSON.stringify(state.cart));
       
       applySettings();
-      renderProducts();
+      renderAll();
       settingsModal.hide();
       alert("تم حفظ كل الإعدادات بنجاح!");
     }
     
-    // تطبيق الإعدادات على الواجهة
+    function saveCart() {
+        localStorage.setItem('guiStoreCart_v2', JSON.stringify(state.cart));
+    }
+    
     function applySettings() {
-      document.title = state.settings.siteTitle || "free chatgpt plus"; // اسم التاب
-      siteTitle.textContent = state.settings.siteTitle; // اسم الموقع في الهيدر
-      siteLogo.src = state.settings.siteLogo; // اللوجو
+      document.title = state.settings.siteTitle || "free chatgpt plus";
+      siteTitle.textContent = state.settings.siteTitle;
+      siteLogo.src = state.settings.siteLogo;
     }
 
-    // تحميل البيانات المحفوظة داخل حقول لوحة التحكم
     function loadSettingsToPanel() {
       settingsSiteTitle.value = state.settings.siteTitle;
       settingsSiteLogo.value = state.settings.siteLogo;
       settingsTelegramLink.value = state.settings.telegramLink;
-      
-      loadProductList(); // تحميل قائمة المنتجات
-      clearEditorForm(); // تفريغ الفورم
+      loadProductList();
+      clearEditorForm();
     }
 
     // ============================
-    //  دالة رسم المنتجات
+    //  دوال رسم الواجهة (Render)
     // ============================
     
-    function renderProducts() {
-      productGrid.innerHTML = ''; // إفراغ الشبكة
-      if (state.products.length === 0) {
-        productGrid.innerHTML = '<p class="text-white-50 col-12 text-center">لا توجد منتجات لعرضها. أضف منتجات من لوحة الإعدادات.</p>';
+    function renderAll() {
+        const searchTerm = searchInput.value || searchInputMobile.value;
+        const activeCategory = document.querySelector('.category-filters .btn.active')?.dataset.category || "all";
+        
+        renderCategoryFilters();
+        renderProducts(searchTerm, activeCategory);
+        updateCartBadge();
+    }
+
+    // --- 1. رسم أزرار الفلترة (جديد) ---
+    function renderCategoryFilters() {
+        // استخراج التصنيفات الفريدة
+        const categories = ["all", ...new Set(state.products.map(p => p.category))];
+        const activeCategory = document.querySelector('.category-filters .btn.active')?.dataset.category || "all";
+        
+        categoryFilters.innerHTML = '';
+        categories.forEach(category => {
+            const categoryName = category === "all" ? "الكل" : category;
+            const isActive = category === activeCategory;
+            const btnClass = isActive ? 'btn-primary' : 'btn-secondary';
+            categoryFilters.innerHTML += `
+                <button class="btn ${btnClass}" data-category="${category}">${categoryName}</button>
+            `;
+        });
+    }
+
+    // --- 2. رسم المنتجات (مطور) ---
+    function renderProducts(searchTerm = "", category = "all") {
+      productGrid.innerHTML = '';
+      
+      searchTerm = searchTerm.toLowerCase();
+      
+      // الفلترة بالبحث والتصنيف
+      const filteredProducts = state.products.filter(product => {
+          const matchesSearch = product.title.toLowerCase().includes(searchTerm) || product.description.toLowerCase().includes(searchTerm);
+          const matchesCategory = (category === "all") || (product.category === category);
+          return matchesSearch && matchesCategory;
+      });
+
+      if (filteredProducts.length === 0) {
+        productGrid.innerHTML = '<p class="text-white-50 col-12 text-center">لا توجد منتجات تطابق بحثك.</p>';
         return;
       }
 
-      state.products.forEach(product => {
+      filteredProducts.forEach(product => {
         const oldPriceHtml = product.oldPrice ? `<span class="old-price">$${product.oldPrice}</span>` : '';
 
         const cardHTML = `
           <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card product-card h-100" data-product-id="${product.id}">
-              <img src="${product.imageUrl}" class="card-img-top product-card-img" alt="${product.title}">
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title">${product.title}</h5>
-                <p class="card-text flex-grow-1">${product.description.substring(0, 70)}...</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="card-price">$${product.price} ${oldPriceHtml}</span>
-                  <button class="btn btn-gold btn-sm">
-                    <i class="fas fa-shopping-cart me-1"></i> شراء
-                  </button>
+            <div class="card product-card h-100">
+              <div class="product-card-top" data-product-id="${product.id}">
+                <img src="${product.imageUrl}" class="card-img-top product-card-img" alt="${product.title}">
+                <div class="card-body pb-0">
+                  <h5 class="card-title product-card-title">${product.title}</h5>
+                  <p class="card-text small text-muted">${product.category}</p>
                 </div>
+              </div>
+              <div class="card-footer d-flex justify-content-between align-items-center bg-transparent border-0 pt-0">
+                <span class="card-price">$${product.price} ${oldPriceHtml}</span>
+                <button class="btn btn-gold btn-sm btn-add-to-cart" data-product-id="${product.id}" title="أضف للسلة">
+                  <i class="fas fa-cart-plus"></i>
+                </button>
               </div>
             </div>
           </div>
@@ -429,54 +631,189 @@
         productGrid.innerHTML += cardHTML;
       });
     }
+    
+    // --- 3. دوال سلة المشتريات (جديدة) ---
+    
+    function addToCart(productId) {
+        const product = state.products.find(p => p.id === productId);
+        if (!product) return;
+        
+        const existingItem = state.cart.find(item => item.id === productId);
+        
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            state.cart.push({ id: product.id, title: product.title, price: product.price, imageUrl: product.imageUrl, quantity: 1 });
+        }
+        
+        saveCart();
+        updateCartBadge();
+        updateCartModal();
+    }
+    
+    function updateCartBadge() {
+        cartBadge.textContent = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+    }
+    
+    function updateCartModal() {
+        cartBody.innerHTML = '';
+        let total = 0;
+        
+        if (state.cart.length === 0) {
+            cartBody.innerHTML = '<p class="text-center text-muted">سلة المشتريات فارغة.</p>';
+            cartTotal.textContent = '$0.00';
+            cartCheckoutLink.classList.add('disabled');
+            return;
+        }
+        
+        state.cart.forEach(item => {
+            total += item.price * item.quantity;
+            cartBody.innerHTML += `
+              <div class="cart-item">
+                <img src="${item.imageUrl}" alt="${item.title}" class="cart-item-img">
+                <div class="flex-grow-1">
+                  <div class="cart-item-title">${item.title}</div>
+                  <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                </div>
+                <input type="number" class="form-control form-control-sm cart-item-quantity" value="${item.quantity}" min="1" data-id="${item.id}">
+                <button class="btn btn-sm btn-outline-danger cart-item-remove" data-id="${item.id}"><i class="fas fa-trash"></i></button>
+              </div>
+            `;
+        });
+        
+        cartTotal.textContent = `$${total.toFixed(2)}`;
+        cartCheckoutLink.classList.remove('disabled');
+        
+        // تجهيز رسالة تيليجرام
+        let telegramMessage = `مرحباً، أريد شراء المنتجات التالية من سلتي:\n\n`;
+        state.cart.forEach(item => {
+            telegramMessage += `- ${item.title} (الكمية: ${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+        });
+        telegramMessage += `\n*المجموع الكلي: $${total.toFixed(2)}*`;
+        cartCheckoutLink.href = `${state.settings.telegramLink}?text=${encodeURIComponent(telegramMessage)}`;
+    }
+    
+    function updateCartQuantity(productId, quantity) {
+        const item = state.cart.find(item => item.id === productId);
+        if (item) {
+            item.quantity = parseInt(quantity, 10);
+            if (item.quantity <= 0) {
+                // الحذف لو الكمية صفر
+                state.cart = state.cart.filter(p => p.id !== productId);
+            }
+            saveCart();
+            updateCartBadge();
+            updateCartModal();
+        }
+    }
 
     // ============================
     //  التعامل مع الأحداث (Events)
     // ============================
 
-    // 1. عند الضغط على كارت منتج
+    // 1. عند الضغط على كارت منتج (يفتح المودال)
     productGrid.addEventListener('click', (e) => {
-      const card = e.target.closest('.product-card');
-      if (!card) return;
-      
-      const productId = card.dataset.productId;
-      const product = state.products.find(p => p.id === productId);
+      const cardTop = e.target.closest('.product-card-top');
+      if (cardTop) {
+        const productId = cardTop.dataset.productId;
+        const product = state.products.find(p => p.id === productId);
 
-      if (product) {
-        // ملء بيانات المودال
-        modalTitle.textContent = product.title;
-        modalImage.src = product.imageUrl;
-        modalDescription.textContent = product.description;
-        modalPrice.textContent = `$${product.price}`;
-        
-        if (product.oldPrice) {
-          modalOldPrice.textContent = `$${product.oldPrice}`;
-          modalOldPrice.classList.remove('d-none');
-        } else {
-          modalOldPrice.classList.add('d-none');
+        if (product) {
+          modalTitle.textContent = product.title;
+          modalImage.src = product.imageUrl;
+          modalDescription.textContent = product.description;
+          modalPrice.textContent = `$${product.price}`;
+          
+          if (product.oldPrice) {
+            modalOldPrice.textContent = `$${product.oldPrice}`;
+            modalOldPrice.classList.remove('d-none');
+          } else {
+            modalOldPrice.classList.add('d-none');
+          }
+          
+          modalPurchaseLink.href = product.telegramLink || state.settings.telegramLink;
+          // حفظ الـ ID في زر "أضف للسلة" داخل المودال
+          modalAddToCartBtn.dataset.productId = product.id;
+          
+          productModal.show();
         }
-        
-        // تحديد رابط تيليجرام
-        modalPurchaseLink.href = product.telegramLink || state.settings.telegramLink;
-        
-        // إظهار المودال
-        productModal.show();
+      }
+      
+      // 2. عند الضغط على زر "أضف للسلة" (من الكارت)
+      const cartBtn = e.target.closest('.btn-add-to-cart');
+      if (cartBtn) {
+          const productId = cartBtn.dataset.productId;
+          addToCart(productId);
       }
     });
 
-    // 2. عند الضغط على زر الدخول في الإعدادات
+    // 3. عند الضغط على "أضف للسلة" (من المودال)
+    modalAddToCartBtn.addEventListener('click', (e) => {
+        const productId = e.target.dataset.productId;
+        addToCart(productId);
+        productModal.hide(); // إخفاء مودال المنتج
+        cartModal.show(); // إظهار مودال السلة
+    });
+
+    // 4. أحداث البحث (للديسكتوب والموبايل)
+    function handleSearch(e) {
+        const searchTerm = e.target.value;
+        const activeCategory = document.querySelector('.category-filters .btn.active')?.dataset.category || "all";
+        renderProducts(searchTerm, activeCategory);
+    }
+    searchInput.addEventListener('input', handleSearch);
+    searchInputMobile.addEventListener('input', handleSearch);
+    
+    // 5. أحداث فلترة التصنيفات
+    categoryFilters.addEventListener('click', (e) => {
+        if (e.target.matches('button')) {
+            const category = e.target.dataset.category;
+            const searchTerm = searchInput.value || searchInputMobile.value;
+            // تحديث الأزرار النشطة
+            document.querySelectorAll('.category-filters .btn').forEach(btn => {
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-secondary');
+            });
+            e.target.classList.add('btn-primary');
+            e.target.classList.remove('btn-secondary');
+            
+            renderProducts(searchTerm, category);
+        }
+    });
+    
+    // 6. أحداث سلة المشتريات (حذف أو تغيير كمية)
+    cartBody.addEventListener('click', e => {
+        if (e.target.closest('.cart-item-remove')) {
+            const productId = e.target.closest('.cart-item-remove').dataset.id;
+            state.cart = state.cart.filter(p => p.id !== productId);
+            saveCart();
+            updateCartBadge();
+            updateCartModal();
+        }
+    });
+    cartBody.addEventListener('change', e => {
+        if (e.target.classList.contains('cart-item-quantity')) {
+            const productId = e.target.dataset.id;
+            const quantity = e.target.value;
+            updateCartQuantity(productId, quantity);
+        }
+    });
+    cartModalEl.addEventListener('show.bs.modal', updateCartModal); // تحديث السلة عند فتحها
+    
+
+    // 7. عند الضغط على زر الدخول في الإعدادات
     loginBtn.addEventListener('click', () => {
       if (passInput.value === state.secret) {
         loginScreen.classList.add('d-none');
         toolsScreen.classList.remove('d-none');
         loginError.classList.add('d-none');
-        loadSettingsToPanel(); // تحميل البيانات الآن
+        loadSettingsToPanel();
       } else {
         loginError.classList.remove('d-none');
       }
     });
     
-    // 3. عند إغلاق مودال الإعدادات (لإعادة ضبط شاشة الدخول)
+    // 8. عند إغلاق مودال الإعدادات
     settingsModalEl.addEventListener('hidden.bs.modal', function () {
        loginScreen.classList.remove('d-none');
        toolsScreen.classList.add('d-none');
@@ -484,14 +821,13 @@
        loginError.classList.add('d-none');
     });
 
-    // 4. عند الضغط على "حفظ كل الإعدادات"
+    // 9. عند الضغط على "حفظ كل الإعدادات"
     saveBtn.addEventListener('click', saveState);
 
     // ============================
     //  لوحة التحكم (GUI Functions)
     // ============================
 
-    // تحميل قائمة المنتجات في الـ <select>
     function loadProductList() {
       productList.innerHTML = '';
       state.products.forEach(p => {
@@ -502,32 +838,30 @@
       });
     }
 
-    // تفريغ فورم الإضافة
     function clearEditorForm() {
       editorTitle.textContent = "إضافة منتج جديد";
-      editorProductId.value = ""; // مهم
+      editorProductId.value = "";
       editorTitleInput.value = "";
+      editorCategoryInput.value = ""; // جديد
       editorPriceInput.value = "";
       editorOldPriceInput.value = "";
       editorImageInput.value = "";
       editorDescriptionInput.value = "";
       editorTelegramLinkInput.value = "";
-      productList.selectedIndex = -1; // إلغاء تحديد أي منتج
+      productList.selectedIndex = -1;
     }
 
-    // عند الضغط على "منتج جديد"
     btnNewProduct.addEventListener('click', clearEditorForm);
 
-    // عند اختيار منتج من القائمة
     productList.addEventListener('change', () => {
       const selectedId = productList.value;
       const product = state.products.find(p => p.id === selectedId);
       if (!product) return;
 
-      // ملء الفورم ببيانات المنتج المحدد
       editorTitle.textContent = "تعديل المنتج: " + product.title;
       editorProductId.value = product.id;
       editorTitleInput.value = product.title;
+      editorCategoryInput.value = product.category || ""; // جديد
       editorPriceInput.value = product.price;
       editorOldPriceInput.value = product.oldPrice || "";
       editorImageInput.value = product.imageUrl;
@@ -535,7 +869,6 @@
       editorTelegramLinkInput.value = product.telegramLink || "";
     });
 
-    // عند الضغط على "حذف المحدد"
     btnDeleteProduct.addEventListener('click', () => {
       const selectedId = productList.value;
       if (!selectedId) {
@@ -545,19 +878,18 @@
       
       if (confirm(`هل أنت متأكد أنك تريد حذف المنتج: ${productList.options[productList.selectedIndex].text}؟`)) {
         state.products = state.products.filter(p => p.id !== selectedId);
-        loadProductList(); // تحديث القائمة
-        clearEditorForm(); // تفريغ الفورم
+        loadProductList();
+        clearEditorForm();
         alert("تم حذف المنتج. اضغط 'حفظ كل الإعدادات' لتأكيد الحذف.");
       }
     });
 
-    // عند الضغط على "حفظ المنتج" (في الفورم)
     btnSaveProduct.addEventListener('click', () => {
       const id = editorProductId.value;
       const productData = {
-        // لو مفيش ID، بنعمل ID جديد عشوائي
         id: id || "prod_" + Date.now(), 
         title: editorTitleInput.value,
+        category: editorCategoryInput.value || "عام", // جديد
         price: parseFloat(editorPriceInput.value) || 0,
         oldPrice: parseFloat(editorOldPriceInput.value) || 0,
         imageUrl: editorImageInput.value,
@@ -565,23 +897,21 @@
         telegramLink: editorTelegramLinkInput.value || ""
       };
 
-      if (!productData.title || !productData.imageUrl) {
-        alert("يرجى ملء الاسم ورابط الصورة على الأقل.");
+      if (!productData.title || !productData.imageUrl || !productData.category) {
+        alert("يرجى ملء (الاسم) و (رابط الصورة) و (التصنيف) على الأقل.");
         return;
       }
 
       if (id) {
-        // هذا تعديل لمنتج موجود
         const index = state.products.findIndex(p => p.id === id);
         state.products[index] = productData;
       } else {
-        // هذا منتج جديد
         state.products.push(productData);
       }
       
-      loadProductList(); // تحديث القائمة
-      productList.value = productData.id; // تحديد المنتج الذي تم حفظه
-      alert("تم حفظ بيانات المنتج. لا تنس الضغط على 'حفظ كل الإعدادات' في الأسفل لحفظ التغييرات بشكل نهائي.");
+      loadProductList();
+      productList.value = productData.id;
+      alert("تم حفظ بيانات المنتج. لا تنس الضغط على 'حفظ كل الإعدادات' في الأسفل.");
     });
 
 
