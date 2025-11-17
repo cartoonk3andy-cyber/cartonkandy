@@ -1,950 +1,396 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl" data-bs-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CartonKandy — سحب المسابقة</title>
+<title>free chatgpt plus</title>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7998736288062269"
      crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-/* ================ الخطوط ================ */
-@font-face {
-  font-family: "AA-TYPO";
-  src: url("AA-TYPO Normal.otf");
-  font-display: swap;
-}
+  :root {
+    --gold-main: #ffb703;
+    --gold-light: #ffd166;
+    --gold-dark: #241700;
+    --bs-body-font-family: 'Cairo', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    --bs-primary: var(--gold-main);
+    --bs-primary-rgb: 255, 183, 3;
+    --bs-body-bg: #0b0a07;
+    --bs-body-color: #fff9ef;
+  }
 
-/* ================ المتغيرات والألوان ================ */
-:root{
-  --gold-1: #ffe6a6;
-  --gold-2: #ffd166;
-  --gold-3: #ffb703;
-  --bg-dark: #0b0a07;
-  --glass-border: rgba(255,230,140,0.12);
-  --shadow: 0 14px 40px rgba(0,0,0,0.6);
-  --radius: 18px;
-  --txt: #fff9ef;
-}
-
-/* ================ الأساسيات ================ */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  min-height:100vh;
-  background: radial-gradient(1200px 600px at 10% 10%, rgba(255,210,95,0.06), transparent 8%),
-              radial-gradient(1000px 500px at 90% 90%, rgba(255,120,50,0.03), transparent 6%),
-              linear-gradient(180deg, #0b0a07 0%, #1b1710 100%);
-  color:var(--txt);
-  font-family:"AA-TYPO", "Cairo", system-ui, sans-serif;
-  direction:rtl;
-  display:flex;
-  flex-direction: column; /* للسماح بالعنوان العلوي */
-  align-items:center;
-  justify-content:center;
-  padding:28px;
-  overflow-x: hidden;
-}
-
-/* ================ العنوان العلوي للمسابقة ================ */
-.main-giveaway-title {
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--gold-2);
-  text-shadow: 0 2px 15px rgba(255, 180, 0, 0.2);
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  background: rgba(255,255,255,0.02);
-  backdrop-filter: blur(4px);
-  text-align: center;
-}
-
-/* ================ الحاوية الرئيسية ================ */
-.app {
-  width:100%;
-  max-width:980px;
-  display:grid;
-  grid-template-columns: 1fr 380px;
-  gap:28px;
-  align-items:start;
-}
-@media (max-width:920px){
-  .app { grid-template-columns: 1fr; }
-  .main-giveaway-title { font-size: 18px; }
-
-  /* تعديل عشان الموبايل يبدأ من فوق */
   body {
-    justify-content: flex-start; /* <-- ده هيخليها تبدأ من فوق */
-    padding: 20px 15px;      /* <-- هوامش أظبط للموبايل */
-  }
-}
-
-/* ================ الكارت الرئيسي ================ */
-.card {
-  background: linear-gradient(180deg, rgba(255,250,230,0.02), rgba(255,245,210,0.01));
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(6px) saturate(120%);
-  position:relative;
-  overflow:hidden;
-}
-.card::before{ /* تأثير توهج خلفي */
-  content:""; position:absolute; left:-20%; top:-10%; width:400px; height:400px;
-  background:radial-gradient(circle at 30% 30%, rgba(255,214,120,0.06), transparent 40%);
-  transform:rotate(-15deg); pointer-events:none;
-}
-
-/* الرأس */
-.header { display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:16px; }
-.logo-wrap{ display:flex; gap:12px; align-items:center; }
-.logo {
-  width:80px; height:80px; border-radius:16px; object-fit:cover;
-  border:3px solid rgba(255,210,90,0.12);
-  box-shadow: 0 8px 30px rgba(255,175,60,0.06);
-}
-.title { font-size:24px; color:var(--gold-1); font-weight:700; }
-.subtitle { font-size:13px; color:rgba(255,255,255,0.6); }
-
-/* زر القائمة */
-.menu-btn {
-  background: transparent; border: 1px solid var(--glass-border);
-  border-radius: 8px; padding: 8px 12px; cursor: pointer;
-  color: var(--gold-2); font-size: 20px;
-  display: flex; align-items: center; justify-content: center;
-  transition: 0.2s;
-}
-.menu-btn:hover { background: rgba(255,255,255,0.05); }
-
-/* ================ منطقة السحب (اللوتري) ================ */
-.lottery {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:14px; padding:20px;
-  display:flex; gap:18px; align-items:center; justify-content:space-between;
-  border: 1px solid rgba(255,220,120,0.06); margin-top: 10px;
-}
-.lottery-left{ 
-  flex:1; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.lottery-right{ width:210px; display:flex; flex-direction:column; align-items:center; gap:12px; }
-
-/* ================ الأنيميشن الجديد (البكرات) ================ */
-.slots { 
-  display:flex; 
-  gap:10px; 
-  /* خلفية الأرقام قبل الدوران */
-  background:linear-gradient(180deg, rgba(0,0,0,0.16), rgba(255,255,255,0.03));
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,240,180,0.08);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.45), inset 0 -8px 40px rgba(0,0,0,0.12);
-}
-.slot {
-  width:60px; height:80px;
-  background: #000;
-  border-radius: 8px;
-  position:relative; 
-  overflow:hidden; 
-}
-.slot-reel {
-  display: flex;
-  flex-direction: column;
-  transition: transform 2.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.slot-reel > div {
-  width: 60px; height: 80px;
-  font-size: 44px; font-weight: 800;
-  color: var(--gold-2);
-  display: flex; align-items: center; justify-content: center;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.final-number-display {
-  font-size: 62px; font-weight:900; color: var(--gold-3);
-  text-shadow: 0 3px 12px rgba(255,150,0,0.15); letter-spacing:6px;
-  display: none; /* يظهر بعد انتهاء الدوران */
-}
-
-/* الأزرار */
-.controls { display:flex; gap:12px; width:100%; }
-.btn {
-  flex:1; padding:12px; border-radius:12px; border:none; font-size:16px; cursor:pointer;
-  background: linear-gradient(180deg, rgba(255,210,80,0.16), rgba(255,180,40,0.06));
-  color:var(--txt); box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  transition: transform .2s, background .2s;
-}
-.btn:hover { transform: scale(1.03); }
-.btn:active{ transform:scale(0.98); }
-.btn:disabled { background: #555; color: #999; cursor: not-allowed; }
-.btn.gold {
-  background: linear-gradient(180deg,var(--gold-2),var(--gold-3));
-  color:#241700; font-weight:700;
-  border: 1px solid rgba(255,220,120,0.2);
-  box-shadow: 0 10px 30px rgba(255,160,30,0.22);
-}
-.btn.gold:hover { background: linear-gradient(180deg,#ffd98a,var(--gold-3)); }
-
-/* ================ الشريط الجانبي ================ */
-.sidebar { display:flex; flex-direction:column; gap:18px; }
-.panel {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:14px; padding:16px;
-  border:1px solid rgba(255,220,120,0.05);
-}
-.counter { font-size:28px; color:var(--gold-1); font-weight:800; }
-.history {
-  display:flex; flex-direction:column; gap:8px; max-height:300px; overflow:auto; padding-left:4px;
-}
-.history .row {
-  display:flex; justify-content:space-between; padding:10px; border-radius:8px;
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.03);
-  font-size: 14px; color: rgba(255,255,255,0.8);
-}
-
-/* ================ النوافذ المنبثقة (Modals) ================ */
-.modal-backdrop {
-  position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:9999;
-  background:rgba(0,0,0,0.85); backdrop-filter: blur(4px);
-  animation: fadeIn 0.3s ease;
-}
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-.modal {
-  width:90%; max-width:560px; /* تم تكبيره قليلاً للإعدادات */
-  background:linear-gradient(180deg,#1a1610, #0f0d0a);
-  color:var(--txt); border-radius:18px; padding:24px;
-  border: 1px solid var(--gold-3);
-  text-align:right; /* لليمين لخانات الإعدادات */
-  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-/* مودال الفائز */
-.winner-modal { text-align:center; }
-.winner-modal .win-num {
-  font-size:82px; font-weight:900; color:#5a3900; margin:10px 0; letter-spacing:4px;
-}
-.win-text { font-size: 22px; font-weight: 800; color: #d68c04; margin-bottom: 10px; }
-.cta-text { font-size: 16px; color: #533b11; font-weight: 700; margin-bottom: 20px; }
-.win-prize { font-size: 14px; color: #7a550d; margin-bottom: 20px; }
-
-/* ================ مودال الإعدادات ================ */
-.settings-input, .settings-select {
-  width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--gold-2);
-  background: rgba(0,0,0,0.3); color: #fff; font-family: inherit; margin-bottom: 12px;
-  font-size: 16px; direction: rtl;
-}
-.settings-tools { display:none; flex-direction: column; gap: 15px; }
-.setting-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--glass-border);
-}
-.setting-row label { font-weight: 700; color: var(--gold-1); }
-.setting-row input[type="text"], .setting-row input[type="password"] {
-  width: 65%; text-align: left; direction: ltr; background: rgba(0,0,0,0.2);
-  border-color: rgba(255,255,255,0.2);
-}
-.setting-row .btn { flex: auto; }
-
-/* Toggle Switch */
-.switch { position: relative; display: inline-block; width: 50px; height: 28px; }
-.switch input { opacity: 0; width: 0; height: 0; }
-.slider {
-  position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #333; transition: .4s; border-radius: 28px;
-}
-.slider:before {
-  position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px;
-  background-color: white; transition: .4s; border-radius: 50%;
-}
-input:checked + .slider { background-color: var(--gold-3); }
-input:checked + .slider:before { transform: translateX(22px); }
-
-/* أدوات صغيرة */
-.hidden{ display:none; }
-.sep{ height:1px; background:rgba(255,255,255,0.1); margin:12px 0; }
-.center { display:flex; align-items:center; justify-content:center; }
-
-/* القصاصات */
-#confetti { position:fixed; inset:0; pointer-events:none; z-index:9000; display:none; }
-
-/* ================ تعديلات الموبايل ================ */
-@media (max-width: 600px) {
-
-  /* 1. (تم نقل الهوامش للجزء الأعلي عند 920px) */
-
-  /* 2. تعديل الهيدر (اللوجو والعنوان) */
-  .header {
-    flex-wrap: wrap; /* للسماح للزر بالنزول سطر لوحده */
-    gap: 10px;
-  }
-  .logo {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-  }
-  .title {
-    font-size: 20px;
-  }
-  .subtitle {
-    font-size: 12px;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(255,210,95,0.06), transparent 8%),
+                radial-gradient(1000px 500px at 90% 90%, rgba(255,120,50,0.03), transparent 6%),
+                linear-gradient(180deg, #0b0a07 0%, #1b1710 100%);
+    min-height: 100vh;
   }
 
-  /* 3. المشكلة الأساسية: منطقة السحب */
-  .lottery {
-    flex-direction: column; /* أهم سطر: نخلي العناصر تحت بعض */
-    gap: 20px;
+  /* تخصيص البوتستراب */
+  .navbar {
+    background: rgba(0,0,0,0.3) !important;
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255,230,140,0.12);
   }
-  .lottery-right {
-    width: 100%; /* نخلي الأزرار بالعرض كامل */
+  .navbar-brand {
+    color: var(--gold-light);
+    font-weight: 700;
   }
-  .lottery-left {
-    /* نخلي البكرات تتوسط */
-    align-items: center; 
-    width: 100%;
+  .btn-outline-gold {
+    --bs-btn-color: var(--gold-light);
+    --bs-btn-border-color: var(--gold-light);
+    --bs-btn-hover-color: var(--gold-dark);
+    --bs-btn-hover-bg: var(--gold-light);
+    --bs-btn-hover-border-color: var(--gold-light);
   }
-
-  /* 4. تصغير حجم الأرقام عشان تناسب الشاشة */
-  .final-number-display {
-    font-size: 50px; /* تصغير الرقم النهائي */
-    letter-spacing: 4px;
+  .btn-gold {
+    background-color: var(--gold-main);
+    color: var(--gold-dark);
+    font-weight: 700;
+    border: none;
   }
-  /* ملحوظة: مش هنغير حجم البكرات (slots) 
-     لأنها مرتبطة بالجافاسكربت (DIGIT_HEIGHT = 80)
-     وحجمها الحالي (حوالي 200px) مناسب للموبايل.
-   */
-
-  /* 5. تصغير خطوط المودال (النافذة المنبثقة) */
-  .winner-modal .win-num {
-    font-size: 60px;
-  }
-  .win-text {
-    font-size: 18px;
+  .btn-gold:hover {
+    background-color: var(--gold-light);
+    color: var(--gold-dark);
   }
 
-  /* 6. تصغير خط العنوان العلوي */
-  .main-giveaway-title {
-    font-size: 16px;
-    padding: 8px 15px;
-    line-height: 1.6;
+  /* تصميم كارت المنتج */
+  .product-card {
+    background: linear-gradient(180deg, rgba(255,250,230,0.04), rgba(255,245,210,0.02));
+    border: 1px solid rgba(255,230,140,0.12);
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  
-  /* 7. تعديل شاشة الإعدادات */
-  .setting-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   }
-  .setting-row label {
-    width: 100%;
+  .product-card-img {
+    height: 200px;
+    object-fit: cover;
   }
-  .setting-row input[type="text"], 
-  .setting-row input[type="password"] {
-    width: 100%;
-    text-align: right;
-    direction: rtl;
+  .card-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gold-light);
   }
-}
+
+  /* تخصيص المودال (النافذة المنبثقة) */
+  .modal-content {
+    background:linear-gradient(180deg,#1a1610, #0f0d0a);
+    border: 1px solid var(--gold-main);
+  }
+  #productModalImage {
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: .375rem;
+  }
 </style>
 </head>
 <body>
 
-<canvas id="confetti"></canvas>
+<nav class="navbar navbar-expand-lg sticky-top mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="#" id="siteTitle">متجر المنتجات</a>
+    <button class="btn btn-outline-gold" type="button" data-bs-toggle="modal" data-bs-target="#settingsModal">
+      الإعدادات
+    </button>
+  </div>
+</nav>
 
-<div class="main-giveaway-title" id="giveawayTitle">
-  مسابقة كرتونك عندي علي 20 دولار = 1000 جنيه مصري
-</div>
-
-<div class="app">
-
-  <section class="card">
-    <div class="header">
-      <div class="logo-wrap">
-        <img src="channels4_profile.jpg" alt="Logo" class="logo" id="logoImg" />
-        <div>
-          <div class="title" id="mainTitle">CartonKandy</div>
-          <div class="subtitle" id="mainSubtitle">شارك واربح - اضغط "اخرج الرقم"</div>
-        </div>
-      </div>
-      
-      <button class="menu-btn" id="settingsBtn" title="الإعدادات">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
-    </div>
-
-    <div class="lottery">
-      <div class="lottery-left">
-        <div class="slots" id="slotsArea">
-          <div class="slot"><div class="slot-reel" id="reel0"></div></div>
-          <div class="slot"><div class="slot-reel" id="reel1"></div></div>
-          <div class="slot"><div class="slot-reel" id="reel2"></div></div>
-        </div>
-        
-        <div class="final-number-display center" id="finalNumberDisplay">---</div>
-        
-        <div style="font-size:12px; color:rgba(255,255,255,0.5); text-align:center; margin-top: 10px" id="announce">جاهز للسحب...</div>
-      </div>
-
-      <div class="lottery-right">
-        <div class="controls">
-          <button class="btn gold" id="drawBtn">اخرج الرقم</button>
-          <button class="btn" id="copyBtn">نسخ الرقم</button>
+<main class="container">
+  <div class="row g-4" id="productGrid">
+    <div class="col-lg-4 col-md-6">
+      <div class="card product-card h-100">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top product-card-img" alt="صورة منتج">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">منتج تجريبي</h5>
+          <p class="card-text flex-grow-1">هذا وصف قصير للمنتج. يمكنك تعديله من الإعدادات.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="card-price">50 ج.م</span>
+            <button class="btn btn-gold" disabled>عرض التفاصيل</button>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <aside class="sidebar">
-    <div class="panel">
-      <div style="display:flex;align-items:center;justify-content:space-between;">
-        <div style="font-weight:800">المشاركون</div>
-        <div class="counter" id="participants">0</div>
-      </div>
-    </div>
-    <div class="panel">
-      <div style="font-weight:800; margin-bottom:12px">سجل السحوبات</div>
-      <div class="history" id="history"></div>
-    </div>
-  </aside>
-
-</div>
-
-<div class="modal-backdrop" id="winModal">
-  <div class="modal winner-modal" style="background:linear-gradient(180deg,#fffaf5, #fff5e8); color:#3b2b05; border-color:#fff;">
-    <div class="win-text">مبروك!</div>
-    <div class="win-num" id="winNum">000</div>
-    <div class="win-prize" id="winPrizeText">لقد فزت بـ 20 دولار!</div>
-    <div class="cta-text">اذهب الان واكتب رقمك في التعليقات</div>
     
-    <button class="btn" id="copyWinNumBtn" style="background: rgba(0,0,0,0.05); color: #333; margin-bottom: 10px; width:100%">نسخ الرقم</button>
-    
-    <button class="btn gold" id="closeWinModal" style="width:100%">اغلاق</button>
+  </div>
+</main>
+
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productModalTitle">اسم المنتج</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="" class="img-fluid w-100" id="productModalImage" alt="صورة المنتج">
+          </div>
+          <div class="col-md-6">
+            <h3 id="productModalPrice" class="card-price mb-3">السعر</h3>
+            <p id="productModalDescription">وصف المنتج الكامل...</p>
+            <hr class="border-secondary">
+            <p class="text-white-50 small">لإتمام عملية الشراء، اضغط على الزر وتواصل معنا عبر تيليجرام لإرسال إثبات الدفع وسنقوم بتسليم المنتج فوراً.</p>
+            <a href="#" id="modalPurchaseLink" class="btn btn-gold btn-lg w-100" target="_blank" rel="noopener noreferrer">
+              إتمام الشراء عبر تيليجرام
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="modal-backdrop" id="settingsModal">
-  <div class="modal">
-    <div style="font-size:20px; font-weight:700; margin-bottom:16px; color:var(--gold-2); text-align:center">إعدادات الموقع</div>
-    
-    <div id="loginScreen" style="text-align:center">
-      <div style="margin-bottom:10px; font-size:14px;">ادخل كلمة المرور للدخول للوحة التحكم</div>
-      <input type="password" id="passInput" class="settings-input" placeholder="كلمة السر" />
-      <button class="btn gold" id="loginBtn" style="width:100%">دخول</button>
-      <div id="loginError" style="color:red; font-size:12px; margin-top:8px; display:none">كلمة المرور خاطئة</div>
+<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="settingsModalLabel">لوحة التحكم</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <div id="loginScreen">
+          <label for="passInput" class="form-label">ادخل كلمة المرور</label>
+          <input type="password" id="passInput" class="form-control mb-2" placeholder="كلمة السر">
+          <button class="btn btn-gold w-100" id="loginBtn">دخول</button>
+          <div id="loginError" class="text-danger mt-2 d-none">كلمة المرور خاطئة</div>
+        </div>
+
+        <div id="toolsScreen" class="d-none">
+          <h4>إدارة المنتجات</h4>
+          <p class="text-white-50">استخدم تنسيق JSON لإضافة منتجاتك. عدّل، احذف، أو أضف منتجات جديدة في هذا المربع، ثم اضغط "حفظ".</p>
+          <textarea id="productsEditor" class="form-control" rows="15" dir="ltr" style="text-align: left;"></textarea>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="telegramLinkInput" class="form-label">رابط تيليجرام (الافتراضي)</label>
+              <input type="text" id="telegramLinkInput" class="form-control" placeholder="https://t.me/username">
+            </div>
+            <div class="col-md-6">
+              <label for="siteTitleInput" class="form-label">عنوان الموقع</label>
+              <input type="text" id="siteTitleInput" class="form-control" placeholder="اسم الموقع">
+            </div>
+          </div>
+          <hr>
+          <button class="btn btn-primary w-100 btn-lg" id="saveBtn">حفظ التغييرات</button>
+        </div>
+
+      </div>
     </div>
-
-    <div id="toolsScreen" class="settings-tools">
-      
-      <div class="setting-row">
-        <label for="titleInput">العنوان الرئيسي</label>
-        <input type="text" id="titleInput" class="settings-input" style="margin:0; width: 60%;"/>
-      </div>
-      <div class="setting-row">
-        <label for="subtitleInput">العنوان الفرعي</label>
-        <input type="text" id="subtitleInput" class="settings-input" style="margin:0; width: 60%;"/>
-      </div>
-      <div class="setting-row">
-        <label for="prizeInput">نص الجائزة</label>
-        <input type="text" id="prizeInput" class="settings-input" style="margin:0; width: 60%;"/>
-      </div>
-      
-      <div class="sep"></div>
-
-      <div class="setting-row">
-        <label>تفعيل الأصوات</label>
-        <label class="switch"><input type="checkbox" id="soundToggle"><span class="slider"></span></label>
-      </div>
-      <div class="setting-row">
-        <label>تفعيل القصاصات</label>
-        <label class="switch"><input type="checkbox" id="confettiToggle"><span class="slider"></span></label>
-      </div>
-
-      <div class="sep"></div>
-
-      <div class="setting-row">
-        <label for="passChangeInput">تغيير كلمة السر</label>
-        <input type="password" id="passChangeInput" class="settings-input" placeholder="اتركها فارغة لعدم التغيير" style="margin:0; width: 60%;"/>
-      </div>
-      <button class="btn gold" id="saveSettingsBtn">حفظ الإعدادات</button>
-      
-      <div class="sep"></div>
-
-      <div style="display:flex; gap: 10px; width: 100%">
-        <button class="btn" id="clearHistoryBtn" style="border:1px solid rgba(255,255,255,0.2); flex: 1;">مسح السجل</button>
-        <button class="btn" id="clearParticipantsBtn" style="border:1px solid rgba(255,255,255,0.2); flex: 1;">تصفير المشاركين</button>
-      </div>
-      
-      <button class="btn" id="exportBtn" style="border:1px solid rgba(255,255,255,0.2)">تصدير سجل السحب (ملف نصي)</button>
-      <button class="btn" id="resetBtn" style="background:rgba(255,50,50,0.2); color:#ffabab; border:1px solid rgba(255,50,50,0.3)">إعادة ضبط المصنع (حذف الكل)</button>
-    </div>
-
-    <button class="btn" id="closeSettings" style="margin-top:18px; background:transparent; border:1px solid rgba(255,255,255,0.1)">إلغاء</button>
   </div>
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <script>
-/* ============================
-  المتغيرات والحالة
-  ============================ */
-const $ = (s) => document.getElementById(s);
-const $$ = (s) => document.querySelectorAll(s);
+  // تحديد العناصر
+  const $ = (s) => document.getElementById(s);
+  const productGrid = $('productGrid');
+  const productModal = new bootstrap.Modal($('productModal'));
+  const settingsModal = new bootstrap.Modal($('settingsModal'));
 
-// عناصر الواجهة
-const participantsEl = $('participants');
-const historyEl = $('history');
-const finalNumberDisplay = $('finalNumberDisplay');
-const announceEl = $('announce');
-const slotsArea = $('slotsArea');
-const reels = [$('reel0'), $('reel1'), $('reel2')];
-const winModal = $('winModal');
-const winNum = $('winNum');
-const winPrizeText = $('winPrizeText');
-const copyBtn = $('copyBtn');
-const drawBtn = $('drawBtn');
+  // عناصر المودال
+  const modalTitle = $('productModalTitle');
+  const modalImage = $('productModalImage');
+  const modalPrice = $('productModalPrice');
+  const modalDescription = $('productModalDescription');
+  const modalPurchaseLink = $('modalPurchaseLink');
+  
+  // عناصر الإعدادات
+  const loginScreen = $('loginScreen');
+  const toolsScreen = $('toolsScreen');
+  const passInput = $('passInput');
+  const loginBtn = $('loginBtn');
+  const loginError = $('loginError');
+  const productsEditor = $('productsEditor');
+  const saveBtn = $('saveBtn');
+  const telegramLinkInput = $('telegramLinkInput');
+  const siteTitleInput = $('siteTitleInput');
 
-// عناصر الإعدادات
-const settingsBtn = $('settingsBtn');
-const settingsModal = $('settingsModal');
-const loginScreen = $('loginScreen');
-const toolsScreen = $('toolsScreen');
-const passInput = $('passInput');
-const loginBtn = $('loginBtn');
-const loginError = $('loginError');
+  // حالة التطبيق
+  let state = {
+    secret: "zozasofsa12345678901",
+    siteTitle: "متجر المنتجات",
+    defaultTelegramLink: "https://t.me/YourUsername",
+    products: []
+  };
 
-// حالة التطبيق
-let state = {
-  participants: 0,
-  history: [],
-  last: null,
-  hasParticipated: false,
-  secret: "zozasofsa12345678901",
-  settings: {
-    title: "CartonKandy",
-    subtitle: "شارك واربح - اضغط \"اخرج الرقم\"",
-    prize: "مسابقة كرتونك عندي علي 20 دولار = 1000 جنيه مصري",
-    soundOn: true,
-    confettiOn: true,
-  }
-};
-
-// المؤثرات الصوتية
-let audioCtx;
-let spinSound, winSound;
-function initAudio() {
-  if (audioCtx) return;
-  try {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    
-    // صوت دوران
-    spinSound = audioCtx.createOscillator();
-    let gainNode = audioCtx.createGain();
-    spinSound.type = 'sawtooth';
-    spinSound.frequency.setValueAtTime(100, audioCtx.currentTime);
-    spinSound.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 2.5);
-    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.5);
-    spinSound.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-    
-    // صوت فوز
-    winSound = () => {
-      if (!state.settings.soundOn) return;
-      let o = audioCtx.createOscillator();
-      let g = audioCtx.createGain();
-      o.type = 'triangle';
-      o.frequency.setValueAtTime(600, audioCtx.currentTime);
-      o.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.2);
-      g.gain.setValueAtTime(0.2, audioCtx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
-      o.connect(g); g.connect(audioCtx.destination);
-      o.start(); o.stop(audioCtx.currentTime + 0.3);
-    };
-
-  } catch(e) {
-    console.warn("Web Audio API is not supported in this browser");
-  }
-}
-// تشغيل صوت الدوران (يجب إعادة إنشائه كل مرة)
-function playSpinSound() {
-  if (!audioCtx || !state.settings.soundOn) return;
-  let o = audioCtx.createOscillator();
-  let g = audioCtx.createGain();
-  o.type = 'sawtooth';
-  o.frequency.setValueAtTime(120, audioCtx.currentTime);
-  o.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 2.8);
-  g.gain.setValueAtTime(0.15, audioCtx.currentTime);
-  g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.8);
-  o.connect(g); g.connect(audioCtx.destination);
-  o.start(); o.stop(audioCtx.currentTime + 2.8);
-}
-
-/* ============================
-  تحميل وحفظ الحالة
-  ============================ */
-function loadState(){
-  try {
-    const p = localStorage.getItem('ck_participants');
-    const h = localStorage.getItem('ck_history');
-    const s = localStorage.getItem('ck_settings');
-    const sec = localStorage.getItem('ck_secret');
-    const hp = localStorage.getItem('ck_hasParticipated');
-
-    state.participants = p ? parseInt(p, 10) : 0;
-    state.history = h ? JSON.parse(h) : [];
-    state.hasParticipated = hp === 'true';
-    if(s) state.settings = {...state.settings, ...JSON.parse(s)};
-    if(sec) state.secret = sec;
-    
-    applySettings();
-    updateUI();
-  } catch(e) { console.warn('load state failed', e); }
-}
-
-function saveState(){
-  localStorage.setItem('ck_participants', state.participants);
-  localStorage.setItem('ck_history', JSON.stringify(state.history));
-}
-function saveSettings() {
-  localStorage.setItem('ck_settings', JSON.stringify(state.settings));
-  localStorage.setItem('ck_secret', state.secret);
-  alert('تم حفظ الإعدادات');
-}
-
-function applySettings() {
-  $('giveawayTitle').textContent = state.settings.prize;
-  $('mainTitle').textContent = state.settings.title;
-  $('mainSubtitle').textContent = state.settings.subtitle;
-  $('winPrizeText').textContent = `لقد ربحت في ${state.settings.title}!`;
-  // تطبيق الإعدادات في المودال
-  $('titleInput').value = state.settings.title;
-  $('subtitleInput').value = state.settings.subtitle;
-  $('prizeInput').value = state.settings.prize;
-  $('soundToggle').checked = state.settings.soundOn;
-  $('confettiToggle').checked = state.settings.confettiOn;
-}
-
-function updateUI(){
-  participantsEl.textContent = state.participants;
-  historyEl.innerHTML='';
-  if(state.history.length===0){
-    historyEl.innerHTML = '<div class="row" style="justify-content:center">لا يوجد سجل</div>';
-    return;
-  }
-  state.history.forEach(item => {
-    const row = document.createElement('div');
-    row.className='row';
-    const d = new Date(item.time).toLocaleTimeString('ar-EG');
-    row.innerHTML = `<span>${item.num}</span><span style="font-size:11px; opacity:0.6">${d}</span>`;
-    historyEl.appendChild(row);
-  });
-}
-
-/* ============================
-  منطق الأنيميشن الجديد (البكرات)
-  ============================ */
-const DIGIT_HEIGHT = 80; // ارتفاع كل رقم (يجب أن يطابق CSS)
-const NUM_DIGITS = 10;
-const REEL_SPINS = 5; // عدد اللفات الكاملة قبل التوقف
-
-function setupReels() {
-  reels.forEach(reel => {
-    reel.innerHTML = ''; // إفراغ البكرة
-    // إنشاء 5 مجموعات من 0-9
-    for (let k = 0; k < REEL_SPINS; k++) {
-      for (let i = 0; i < NUM_DIGITS; i++) {
-        const digitEl = document.createElement('div');
-        digitEl.textContent = i;
-        reel.appendChild(digitEl);
-      }
+  // مثال للمنتجات (إذا كان المتجر فارغاً)
+  const exampleProducts = [
+    {
+      "id": 1,
+      "title": "منتج رقم 1",
+      "price": "50 ج.م",
+      "description": "هذا هو الوصف الكامل للمنتج الأول. يمكنك كتابة تفاصيل المنتج هنا وكيفية استخدامه.",
+      "imageUrl": "https://via.placeholder.com/600x400/ffb703/241700?text=Product+1",
+      "telegramLink": "" // فارغ لاستخدام الرابط الافتراضي
+    },
+    {
+      "id": 2,
+      "title": "منتج رقم 2 (رابط خاص)",
+      "price": "120 ج.م",
+      "description": "هذا منتج له رابط تيليجرام مختلف مخصص له.",
+      "imageUrl": "https://via.placeholder.com/600x400/ffd166/241700?text=Product+2",
+      "telegramLink": "https://t.me/AnotherUser"
     }
-  });
-}
+  ];
 
-function rollSlots(target){
-  initAudio(); // تأكد من تشغيل الصوت
-  playSpinSound();
-  
-  const s = String(target).padStart(3,'0').split('');
-  
-  // إخفاء الرقم النهائي وإظهار البكرات
-  finalNumberDisplay.style.display = 'none';
-  slotsArea.style.display = 'flex';
-  
-  reels.forEach((reel, idx) => {
-    const targetDigit = parseInt(s[idx]);
-    
-    // الحسابات: (عدد اللفات * 10 أرقام * ارتفاع الرقم) + (الرقم المستهدف * ارتفاع الرقم)
-    // نجعلها تتوقف في آخر مجموعة أرقام
-    const targetPosition = ((REEL_SPINS - 1) * NUM_DIGITS * DIGIT_HEIGHT) + (targetDigit * DIGIT_HEIGHT);
-    const spinDuration = 2.5 + idx * 0.5; // 2.5s, 3.0s, 3.5s
-    
-    // 1. إعادة تعيين فورية للبداية (بدون أنيميشن)
-    reel.style.transition = 'none';
-    reel.style.transform = 'translateY(0)';
-    
-    // 2. فرض إعادة طلاء (repaint)
-    void reel.offsetWidth; 
-    
-    // 3. تطبيق الأنيميشن والتحريك للمكان النهائي
-    reel.style.transition = `transform ${spinDuration}s cubic-bezier(0.25, 1, 0.5, 1)`;
-    reel.style.transform = `translateY(-${targetPosition}px)`;
-  });
-}
+  // ============================
+  //  دوال حفظ وتحميل البيانات
+  // ============================
 
-/* ============================
-  منطق السحب الرئيسي
-  ============================ */
-drawBtn.addEventListener('click', function(){
-  drawBtn.disabled = true;
-  drawBtn.textContent = 'جاري السحب...';
-  announceEl.textContent = '...';
-  
-  // التحقق من المشاركة (المنطق الجديد)
-  if (!state.hasParticipated) {
-    state.participants++;
-    localStorage.setItem('ck_participants', state.participants);
-    participantsEl.textContent = state.participants;
-    
-    state.hasParticipated = true;
-    localStorage.setItem('ck_hasParticipated', 'true');
-  }
-
-  let n;
-  do { n = Math.floor(Math.random()*900) + 100; } while(n === state.last);
-  state.last = n;
-
-  rollSlots(n);
-
-  // الانتظار حتى تتوقف آخر بكرة + 0.5 ثانية
-  setTimeout(()=>{
-    finalNumberDisplay.textContent = n;
-    finalNumberDisplay.style.display = 'block';
-    slotsArea.style.display = 'none'; // إخفاء البكرات
-    
-    announceEl.textContent = 'تم اختيار الرقم!';
-    
-    // حفظ في السجل
-    state.history.unshift({num:n, time: new Date().toISOString()});
-    if(state.history.length>50) state.history.pop(); // زيادة السجل
-    saveState();
-    updateUI();
-
-    if (state.settings.confettiOn) confetti.emit(150);
-    winSound();
-    
-    // إظهار الفائز
-    setTimeout(()=>{
-      winNum.textContent = n;
-      winModal.style.display = 'flex';
-      drawBtn.disabled = false;
-      drawBtn.textContent = 'اخرج الرقم';
-    }, 600);
-  }, 3500 + 500); // (آخر بكرة 3.5 ثانية) + 0.5 ثانية
-});
-
-// زر النسخ الرئيسي
-copyBtn.addEventListener('click', ()=>{
-  const txt = state.last;
-  if(txt && txt !== '---') {
-    navigator.clipboard.writeText(txt).then(() => {
-      copyBtn.textContent = 'تم النسخ!';
-      setTimeout(() => copyBtn.textContent = 'نسخ الرقم', 1500);
-    });
-  }
-});
-
-// زر النسخ في المودال
-$('copyWinNumBtn').addEventListener('click', (e)=>{
-  const txt = winNum.textContent;
-  const btn = e.target;
-  if(txt && txt !== '---') {
-    navigator.clipboard.writeText(txt).then(() => {
-      btn.textContent = 'تم النسخ بنجاح!';
-      setTimeout(() => btn.textContent = 'نسخ الرقم', 2000);
-    });
-  }
-});
-
-$('closeWinModal').addEventListener('click', ()=> winModal.style.display='none');
-
-/* ============================
-  إعدادات محمية
-  ============================ */
-settingsBtn.addEventListener('click', ()=>{
-  settingsModal.style.display='flex';
-  loginScreen.style.display = 'block';
-  toolsScreen.style.display = 'none';
-  passInput.value = '';
-  loginError.style.display='none';
-  // تحميل الإعدادات الحالية في النموذج
-  applySettings();
-});
-
-$('closeSettings').addEventListener('click', ()=> settingsModal.style.display='none');
-
-loginBtn.addEventListener('click', ()=>{
-  if(passInput.value === state.secret){
-    loginScreen.style.display = 'none';
-    toolsScreen.style.display = 'flex';
-  } else {
-    loginError.style.display = 'block';
-  }
-});
-
-// حفظ الإعدادات
-$('saveSettingsBtn').addEventListener('click', () => {
-  state.settings.title = $('titleInput').value;
-  state.settings.subtitle = $('subtitleInput').value;
-  state.settings.prize = $('prizeInput').value;
-  state.settings.soundOn = $('soundToggle').checked;
-  state.settings.confettiOn = $('confettiToggle').checked;
-  
-  const newPass = $('passChangeInput').value;
-  if (newPass && newPass.length > 5) {
-    state.secret = newPass;
-    $('passChangeInput').value = '';
-  }
-  
-  saveSettings();
-  applySettings();
-  settingsModal.style.display = 'none';
-});
-
-/* أدوات الإدارة */
-$('clearHistoryBtn').addEventListener('click', () => {
-  if (confirm('هل تريد مسح سجل السحوبات فقط؟')) {
-    state.history = [];
-    saveState(); updateUI();
-  }
-});
-$('clearParticipantsBtn').addEventListener('click', () => {
-  if (confirm('هل تريد تصفير عداد المشاركين؟ (لن يحذف الزوار الذين شاركوا)')) {
-    state.participants = 0;
-    saveState(); updateUI();
-  }
-});
-
-$('resetBtn').addEventListener('click', ()=>{
-  if(confirm('تحذير: سيتم حذف جميع البيانات والإعدادات والمشاركين. هل أنت متأكد؟')){
-    localStorage.removeItem('ck_participants');
-    localStorage.removeItem('ck_history');
-    localStorage.removeItem('ck_settings');
-    localStorage.removeItem('ck_secret');
-    localStorage.removeItem('ck_hasParticipated');
-    // إعادة تحميل الصفحة للضبط
-    location.reload();
-  }
-});
-
-$('exportBtn').addEventListener('click', ()=>{
-  const text = state.history.map(h=> `الرقم: ${h.num} | الوقت: ${new Date(h.time).toLocaleString('ar-EG')}`).join('\n');
-  const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'مسابقة_سجل.txt';
-  a.click();
-});
-
-/* ============================
-  القصاصات (Confetti) المحسّنة
-  ============================ */
-const confetti = {
-  canvas: $('confetti'),
-  ctx: $('confetti').getContext('2d'),
-  pieces: [],
-  running: false,
-  colors: ['#ffe6a6', '#ffd166', '#ffb703', '#ffffff', '#fff9ef'],
-  
-  emit(count = 100){
-    if (!this.canvas) return;
-    this.canvas.style.display='block';
-    this.running = true;
-    this.pieces = [];
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
-    
-    for(let i=0; i<count; i++){
-      this.pieces.push({
-        x: Math.random() * this.canvas.width,
-        y: -20 - Math.random() * 100,
-        w: 10 + Math.random() * 10,
-        h: 6 + Math.random() * 6,
-        vx: (Math.random() - 0.5) * 8,
-        vy: Math.random() * 5 + 3,
-        rot: Math.random() * 360,
-        rotSpeed: (Math.random() - 0.5) * 10,
-        color: this.colors[Math.floor(Math.random() * this.colors.length)],
-        opacity: 1
-      });
-    }
-    if (!this.looping) this.loop();
-  },
-  
-  loop() {
-    this.looping = true;
-    this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
-    
-    this.pieces.forEach((p, i) => {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.rot += p.rotSpeed;
-      p.opacity = Math.max(0, p.opacity - 0.01);
-      
-      this.ctx.save();
-      this.ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
-      this.ctx.rotate(p.rot * Math.PI / 180);
-      this.ctx.fillStyle = p.color;
-      this.ctx.globalAlpha = p.opacity;
-      this.ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-      this.ctx.restore();
-      
-      if (p.y > this.canvas.height || p.opacity === 0) {
-        this.pieces.splice(i, 1);
-      }
-    });
-    
-    if(this.pieces.length > 0) {
-      requestAnimationFrame(() => this.loop());
+  function loadState() {
+    const savedState = localStorage.getItem('bootstrapStoreState');
+    if (savedState) {
+      state = JSON.parse(savedState);
     } else {
-      this.running = false;
-      this.looping = false;
-      setTimeout(() => this.canvas.style.display='none', 500);
+      // إذا كان أول مرة، استخدم المثال
+      state.products = exampleProducts;
+    }
+    // تطبيق الإعدادات المحفوظة
+    $('siteTitle').textContent = state.siteTitle;
+    document.title = state.siteTitle; // <-- تطبيق العنوان من الإعدادات
+    
+    // تحميل البيانات في لوحة التحكم
+    productsEditor.value = JSON.stringify(state.products, null, 2); // null, 2 = تنسيق جميل
+    telegramLinkInput.value = state.defaultTelegramLink;
+    siteTitleInput.value = state.siteTitle;
+  }
+
+  function saveState() {
+    try {
+      // قراءة البيانات من المحرر
+      state.products = JSON.parse(productsEditor.value);
+      state.defaultTelegramLink = telegramLinkInput.value;
+      state.siteTitle = siteTitleInput.value;
+      
+      localStorage.setItem('bootstrapStoreState', JSON.stringify(state));
+      
+      applySettings(); // تطبيق التغييرات على الواجهة
+      renderProducts(); // إعادة رسم المنتجات
+      
+      // إخفاء مودال الإعدادات
+      settingsModal.hide();
+
+    } catch (e) {
+      alert("خطأ في تنسيق JSON! \nتأكد من الأقواس والفواصل. \n" + e.message);
     }
   }
-};
-window.addEventListener('resize', () => {
-  if (confetti.canvas) {
-    confetti.canvas.width = window.innerWidth;
-    confetti.canvas.height = window.innerHeight;
-  }
-});
-
-// ============================
-// بدء التشغيل
-// ============================
-window.addEventListener('load', ()=>{
-  setupReels(); // تجهيز بكرات الأرقام
-  loadState(); // تحميل البيانات المحفوظة
   
-  // ضبط البكرات على --- في البداية
-  finalNumberDisplay.textContent = '---';
-  finalNumberDisplay.style.display = 'block';
-  slotsArea.style.display = 'none';
-});
+  function applySettings() {
+      $('siteTitle').textContent = state.siteTitle;
+      // تغيير العنوان الذي يظهر في "البحث" (التاب)
+      document.title = "free chatgpt plus"; // <-- تم تثبيته بناءً على طلبك
+  }
 
+  // ============================
+  //  دالة رسم المنتجات
+  // ============================
+  
+  function renderProducts() {
+    productGrid.innerHTML = ''; // إفراغ الشبكة
+    if (state.products.length === 0) {
+      productGrid.innerHTML = '<p class="text-white-50">لا توجد منتجات لعرضها. أضف منتجات من لوحة الإعدادات.</p>';
+      return;
+    }
+
+    state.products.forEach(product => {
+      // اختصار الوصف
+      const shortDesc = product.description.length > 100 ? product.description.substring(0, 100) + '...' : product.description;
+
+      const cardHTML = `
+        <div class="col-lg-4 col-md-6">
+          <div class="card product-card h-100">
+            <img src="${product.imageUrl}" class="card-img-top product-card-img" alt="${product.title}">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">${product.title}</h5>
+              <p class="card-text flex-grow-1">${shortDesc}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="card-price">${product.price}</span>
+                <button class="btn btn-gold" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#productModal" 
+                        data-id="${product.id}">
+                  عرض التفاصيل
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      productGrid.innerHTML += cardHTML;
+    });
+  }
+
+  // ============================
+  //  التعامل مع الأحداث (Events)
+  // ============================
+
+  // 1. عند فتح نافذة تفاصيل المنتج
+  $('productModal').addEventListener('show.bs.modal', function (event) {
+    // الزر الذي تم الضغط عليه
+    const button = event.relatedTarget;
+    // استخراج ID المنتج
+    const productId = button.getAttribute('data-id');
+    
+    // إيجاد المنتج في البيانات
+    const product = state.products.find(p => p.id == productId);
+
+    if (product) {
+      // ملء بيانات المودال
+      modalTitle.textContent = product.title;
+      modalImage.src = product.imageUrl;
+      modalPrice.textContent = product.price;
+      modalDescription.textContent = product.description;
+      
+      // تحديد رابط تيليجرام (إما الرابط الخاص بالمنتج أو الرابط الافتراضي)
+      modalPurchaseLink.href = product.telegramLink || state.defaultTelegramLink;
+    }
+  });
+
+  // 2. عند الضغط على زر الدخول في الإعدادات
+  loginBtn.addEventListener('click', () => {
+    if (passInput.value === state.secret) {
+      loginScreen.classList.add('d-none');
+      toolsScreen.classList.remove('d-none');
+      loginError.classList.add('d-none');
+    } else {
+      loginError.classList.remove('d-none');
+    }
+  });
+  
+  // 3. عند إغلاق مودال الإعدادات (لإعادة ضبط شاشة الدخول)
+  $('settingsModal').addEventListener('hidden.bs.modal', function () {
+     loginScreen.classList.remove('d-none');
+     toolsScreen.classList.add('d-none');
+     passInput.value = '';
+     loginError.classList.add('d-none');
+  });
+
+  // 4. عند الضغط على "حفظ التغييرات"
+  saveBtn.addEventListener('click', saveState);
+
+  // ============================
+  //  بدء تشغيل التطبيق
+  // ============================
+  
+  loadState();
+  renderProducts();
+
+  // ملاحظة: تم تثبيت العنوان بناءً على طلبك
+  document.title = "free chatgpt plus";
+  
 </script>
+
 </body>
 </html>
