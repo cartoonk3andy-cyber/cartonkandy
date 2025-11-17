@@ -7,390 +7,598 @@
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7998736288062269"
      crossorigin="anonymous"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2j+FWyQ0/K5mJnnGa50IDWSYder3igpkNyxYA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
+  /* ====== المتغيرات الأساسية والثيم ====== */
   :root {
-    --gold-main: #ffb703;
-    --gold-light: #ffd166;
-    --gold-dark: #241700;
-    --bs-body-font-family: 'Cairo', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    --bs-primary: var(--gold-main);
-    --bs-primary-rgb: 255, 183, 3;
-    --bs-body-bg: #0b0a07;
-    --bs-body-color: #fff9ef;
+    --foxy-gold: #ffb703;
+    --foxy-gold-light: #ffd166;
+    --foxy-gold-dark: #241700;
+    --foxy-bg-dark: #121212; /* لون الخلفية الداكنة */
+    --foxy-card-bg: #1e1e1e; /* لون خلفية الكروت */
+    --foxy-border: #333;
+    --foxy-text-color: #e0e0e0; /* لون النص الفاتح */
+    --foxy-muted-text: #999;
+    --foxy-red-discount: #dc3545; /* لون الخصم الأحمر */
+
+    --bs-body-font-family: 'Cairo', "Roboto", system-ui, -apple-system, "Segoe UI", Arial;
+    --bs-body-bg: var(--foxy-bg-dark);
+    --bs-body-color: var(--foxy-text-color);
+    --bs-link-color: var(--foxy-gold);
+    --bs-link-hover-color: var(--foxy-gold-light);
   }
 
+  /* ====== تنسيقات عامة ====== */
   body {
-    background: radial-gradient(1200px 600px at 10% 10%, rgba(255,210,95,0.06), transparent 8%),
-                radial-gradient(1000px 500px at 90% 90%, rgba(255,120,50,0.03), transparent 6%),
-                linear-gradient(180deg, #0b0a07 0%, #1b1710 100%);
+    background-color: var(--foxy-bg-dark); /* تأكيد الخلفية */
+    font-family: var(--bs-body-font-family);
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden; /* لمنع أي سكرول أفقي غير مرغوب فيه */
   }
 
-  /* تخصيص البوتستراب */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--foxy-text-color);
+    font-weight: 600;
+  }
+
+  p {
+    color: var(--foxy-muted-text);
+  }
+
+  .container-fluid-custom {
+    padding-left: 3rem; /* يمين ويسار أوسع للمحتوى الرئيسي */
+    padding-right: 3rem;
+  }
+  @media (max-width: 992px) { /* لجعلها متجاوبة على الشاشات الصغيرة */
+    .container-fluid-custom {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  /* ====== Navbar ====== */
   .navbar {
-    background: rgba(0,0,0,0.3) !important;
-    backdrop-filter: blur(5px);
-    border-bottom: 1px solid rgba(255,230,140,0.12);
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--foxy-border);
+    padding-top: .75rem;
+    padding-bottom: .75rem;
   }
   .navbar-brand {
-    color: var(--gold-light);
+    color: var(--foxy-gold) !important;
     font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
   }
-  .btn-outline-gold {
-    --bs-btn-color: var(--gold-light);
-    --bs-btn-border-color: var(--gold-light);
-    --bs-btn-hover-color: var(--gold-dark);
-    --bs-btn-hover-bg: var(--gold-light);
-    --bs-btn-hover-border-color: var(--gold-light);
+  .navbar-brand img {
+    height: 35px; /* ارتفاع اللوجو */
+    margin-inline-end: 10px;
   }
-  .btn-gold {
-    background-color: var(--gold-main);
-    color: var(--gold-dark);
-    font-weight: 700;
-    border: none;
+  .navbar-nav .nav-link {
+    color: var(--foxy-text-color) !important;
+    font-weight: 500;
+    margin-inline-end: 1rem;
   }
-  .btn-gold:hover {
-    background-color: var(--gold-light);
-    color: var(--gold-dark);
+  .navbar-nav .nav-link.active,
+  .navbar-nav .nav-link:hover {
+    color: var(--foxy-gold) !important;
   }
 
-  /* تصميم كارت المنتج */
+  /* شريط البحث في Navbar */
+  .search-input-group {
+    max-width: 350px; /* تحديد عرض شريط البحث */
+  }
+  .search-input-group .form-control {
+    background-color: #2a2a2a;
+    border: 1px solid var(--foxy-border);
+    color: var(--foxy-text-color);
+  }
+  .search-input-group .form-control::placeholder {
+    color: var(--foxy-muted-text);
+  }
+  .search-input-group .btn {
+    background-color: var(--foxy-gold);
+    border-color: var(--foxy-gold);
+    color: var(--foxy-bg-dark);
+  }
+  .search-input-group .btn:hover {
+    background-color: var(--foxy-gold-light);
+    border-color: var(--foxy-gold-light);
+  }
+
+  /* أيقونات المستخدم والسلة في Navbar */
+  .navbar-icons .nav-link {
+    font-size: 1.2rem;
+    margin-inline-start: 1rem;
+  }
+
+  /* ====== الأقسام العلوية (الفئات المميزة) ====== */
+  .top-categories {
+    background-color: #1a1a1a;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--foxy-border);
+  }
+  .category-item {
+    text-align: center;
+    color: var(--foxy-text-color);
+    text-decoration: none;
+    display: block;
+    transition: transform 0.2s ease;
+  }
+  .category-item:hover {
+    transform: translateY(-5px);
+    color: var(--foxy-gold);
+  }
+  .category-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid var(--foxy-border);
+    background-color: #2a2a2a;
+  }
+  .category-item span {
+    font-size: 0.85rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  /* ====== أقسام المنتجات العامة (Our Picks, etc.) ====== */
+  .product-section-title {
+    color: var(--foxy-text-color);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
+
+  /* كارت المنتج (Product Card) */
   .product-card {
-    background: linear-gradient(180deg, rgba(255,250,230,0.04), rgba(255,245,210,0.02));
-    border: 1px solid rgba(255,230,140,0.12);
-    backdrop-filter: blur(6px);
+    background-color: var(--foxy-card-bg);
+    border: 1px solid var(--foxy-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    position: relative;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%; /* لضمان تساوي ارتفاع الكروت في الـ grid */
+    display: flex;
+    flex-direction: column;
   }
   .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+  .product-card-img-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* نسبة عرض إلى ارتفاع 4:3 */
+    overflow: hidden;
   }
   .product-card-img {
-    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    border-bottom: 1px solid var(--foxy-border);
   }
-  .card-price {
-    font-size: 1.25rem;
+  .product-discount-badge {
+    position: absolute;
+    top: 10px;
+    inset-inline-start: 10px;
+    background-color: var(--foxy-red-discount);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 10;
+  }
+  .product-sold-out-badge {
+    position: absolute;
+    top: 10px;
+    inset-inline-start: 10px;
+    background-color: #6c757d; /* لون رصاصي */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 10;
+  }
+  .product-card-body {
+    padding: 1rem;
+    flex-grow: 1; /* لجعل المحتوى يتمدد */
+    display: flex;
+    flex-direction: column;
+  }
+  .product-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--foxy-text-color);
+    margin-bottom: 0.5rem;
+  }
+  .product-card-stars {
+    color: var(--foxy-gold);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .product-card-price-old {
+    color: var(--foxy-muted-text);
+    text-decoration: line-through;
+    font-size: 0.9rem;
+    margin-inline-end: 8px;
+  }
+  .product-card-price-new {
+    color: var(--foxy-gold);
     font-weight: 700;
-    color: var(--gold-light);
+    font-size: 1.1rem;
+  }
+  .product-card-prices {
+    margin-top: auto; /* لدفع السعر لأسفل الكارد */
   }
 
-  /* تخصيص المودال (النافذة المنبثقة) */
-  .modal-content {
-    background:linear-gradient(180deg,#1a1610, #0f0d0a);
-    border: 1px solid var(--gold-main);
+  /* ====== سلايدر المنتجات (Scrollable Sections) ====== */
+  .product-slider-container {
+    overflow-x: auto;
+    white-space: nowrap; /* لمنع الكروت من النزول لسطر جديد */
+    padding-bottom: 1rem; /* مسافة للسكرول بار */
+    -webkit-overflow-scrolling: touch; /* لتحسين السكرول على iOS */
   }
-  #productModalImage {
+  .product-slider-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  .product-slider-container::-webkit-scrollbar-track {
+    background: #2a2a2a;
+    border-radius: 10px;
+  }
+  .product-slider-container::-webkit-scrollbar-thumb {
+    background: var(--foxy-border);
+    border-radius: 10px;
+  }
+  .product-slider-item {
+    display: inline-block;
+    width: 280px; /* عرض كل كارت في السلايدر */
+    margin-inline-end: 1rem;
+    vertical-align: top; /* لتجنب أي مشاكل في المحاذاة */
+  }
+  .product-slider-item:last-child {
+    margin-inline-end: 0;
+  }
+  .product-slider-item .product-card-img-wrap {
+    padding-top: 66%; /* نسبة 3:2 لسلايدر */
+  }
+
+  /* ====== صفحة تفاصيل المنتج (Modal) ====== */
+  #productDetailModal .modal-content {
+    background-color: var(--foxy-card-bg);
+    border: 1px solid var(--foxy-border);
+  }
+  #productDetailModal .modal-header {
+    border-bottom: 1px solid var(--foxy-border);
+  }
+  #productDetailModal .modal-title {
+    color: var(--foxy-text-color);
+    font-weight: 700;
+  }
+  #productDetailModal .close-btn {
+    color: var(--foxy-muted-text);
+  }
+  #productDetailModal .product-image-gallery img {
+    border: 1px solid var(--foxy-border);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+  }
+  #productDetailModal .product-image-gallery img:hover {
+    border-color: var(--foxy-gold);
+  }
+  #productDetailModal .main-product-image {
     max-height: 400px;
-    object-fit: cover;
-    border-radius: .375rem;
+    object-fit: contain; /* لجعل الصورة تظهر كاملة داخل الإطار */
+    width: 100%;
+    border: 1px solid var(--foxy-border);
+    border-radius: 0.5rem;
+  }
+  #productDetailModal .product-detail-price-new {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--foxy-gold);
+  }
+  #productDetailModal .product-detail-price-old {
+    color: var(--foxy-muted-text);
+    text-decoration: line-through;
+    font-size: 1.2rem;
+    margin-inline-end: 1rem;
+  }
+  #productDetailModal .product-detail-discount-badge {
+    background-color: var(--foxy-red-discount);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  #productDetailModal .product-specs ul {
+    list-style: none;
+    padding-inline-start: 0;
+  }
+  #productDetailModal .product-specs li {
+    background-color: #2a2a2a;
+    border: 1px solid var(--foxy-border);
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--foxy-text-color);
+  }
+  #productDetailModal .product-specs li strong {
+    color: var(--foxy-gold-light);
+  }
+  #productDetailModal .buy-btn {
+    background-color: var(--foxy-gold);
+    color: var(--foxy-dark-bg);
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  #productDetailModal .buy-btn:hover {
+    background-color: var(--foxy-gold-light);
+  }
+  #productDetailModal .whatsapp-btn {
+    background-color: #25d366; /* لون واتساب */
+    color: white;
+  }
+  #productDetailModal .whatsapp-btn:hover {
+    background-color: #1da851;
+  }
+
+  /* ====== التعليقات والتقييمات ====== */
+  .review-card {
+    background-color: #2a2a2a;
+    border: 1px solid var(--foxy-border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .review-stars {
+    color: var(--foxy-gold);
+    font-size: 1rem;
+  }
+  .progress-bar-gold {
+    background-color: var(--foxy-gold);
+  }
+  .review-input .form-control {
+    background-color: #2a2a2a;
+    border: 1px solid var(--foxy-border);
+    color: var(--foxy-text-color);
+  }
+  .review-input .form-control::placeholder {
+    color: var(--foxy-muted-text);
+  }
+  .review-input .btn-gold {
+    background-color: var(--foxy-gold);
+    color: var(--foxy-dark-bg);
+  }
+
+  /* ====== الفوتر (Footer) ====== */
+  footer {
+    background-color: #1a1a1a;
+    border-top: 1px solid var(--foxy-border);
+    padding: 2rem 0;
+    margin-top: auto; /* يدفع الفوتر لأسفل الصفحة */
+  }
+  footer .footer-logo {
+    height: 40px;
+    filter: brightness(0.8) sepia(1) hue-rotate(-50deg) saturate(3); /* لجعل اللوجو ذهبي إذا كان أبيض */
+  }
+  footer .social-icons a {
+    color: var(--foxy-muted-text);
+    font-size: 1.5rem;
+    margin-inline-end: 1rem;
+    transition: color 0.2s ease;
+  }
+  footer .social-icons a:hover {
+    color: var(--foxy-gold);
+  }
+  footer .footer-links a {
+    color: var(--foxy-muted-text);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  footer .footer-links a:hover {
+    color: var(--foxy-gold);
+  }
+
+  /* ====== زر الواتساب العائم ====== */
+  .whatsapp-floating-btn {
+    position: fixed;
+    bottom: 20px;
+    inset-inline-start: 20px;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    transition: transform 0.2s ease;
+  }
+  .whatsapp-floating-btn:hover {
+    transform: scale(1.1);
+  }
+
+  /* ====== لوحة الإعدادات (Settings Modal) ====== */
+  #settingsModal .modal-content {
+    background-color: var(--foxy-card-bg);
+    border: 1px solid var(--foxy-border);
+  }
+  #settingsModal .form-control {
+    background-color: #2a2a2a;
+    border: 1px solid var(--foxy-border);
+    color: var(--foxy-text-color);
+  }
+  #settingsModal .form-control::placeholder {
+    color: var(--foxy-muted-text);
+  }
+  #settingsModal .form-label {
+    color: var(--foxy-text-color);
+  }
+  #settingsModal textarea {
+    font-family: 'Roboto Mono', monospace; /* خط أحادي لسهولة قراءة JSON */
+  }
+  #settingsModal .btn-primary {
+    background-color: var(--foxy-gold);
+    border-color: var(--foxy-gold);
+    color: var(--foxy-dark-bg);
+  }
+  #settingsModal .btn-primary:hover {
+    background-color: var(--foxy-gold-light);
+    border-color: var(--foxy-gold-light);
   }
 </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg sticky-top mb-4">
-  <div class="container">
-    <a class="navbar-brand" href="#" id="siteTitle">متجر المنتجات</a>
-    <button class="btn btn-outline-gold" type="button" data-bs-toggle="modal" data-bs-target="#settingsModal">
-      الإعدادات
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container-fluid-custom">
+    <a class="navbar-brand" href="#" id="siteLogoLink">
+      <img src="https://via.placeholder.com/40x40/ffb703/000000?text=F" alt="Logo">
+      <span id="siteTitle">Foxy Store</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">الرئيسية</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            الفئات
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" id="categoryDropdown">
+            <li><a class="dropdown-item" href="#">برامج</a></li>
+            <li><a class="dropdown-item" href="#">تصميم</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">المنتجات المخفضة</a>
+        </li>
+      </ul>
+      <form class="d-flex search-input-group me-3" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search for products" aria-label="Search" id="globalSearchInput">
+        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+      <ul class="navbar-nav navbar-icons">
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-heart"></i> <span class="badge text-bg-warning">0</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> <span class="badge text-bg-warning">0</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-sm btn-outline-warning ms-3" type="button" data-bs-toggle="modal" data-bs-target="#settingsModal">
+            <i class="fas fa-cog"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 
-<main class="container">
-  <div class="row g-4" id="productGrid">
-    <div class="col-lg-4 col-md-6">
-      <div class="card product-card h-100">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top product-card-img" alt="صورة منتج">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">منتج تجريبي</h5>
-          <p class="card-text flex-grow-1">هذا وصف قصير للمنتج. يمكنك تعديله من الإعدادات.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="card-price">50 ج.م</span>
-            <button class="btn btn-gold" disabled>عرض التفاصيل</button>
-          </div>
-        </div>
-      </div>
+<section class="top-categories mb-5">
+  <div class="container-fluid-custom">
+    <div class="d-flex flex-wrap justify-content-center justify-content-lg-between gap-3" id="topCategoriesContainer">
+      <a href="#" class="category-item">
+        <img src="https://via.placeholder.com/60x60/343a40/ffffff?text=AI" alt="AI">
+        <span>AI</span>
+      </a>
+      <a href="#" class="category-item">
+        <img src="https://via.placeholder.com/60x60/343a40/ffffff?text=Design" alt="Design">
+        <span>Design</span>
+      </a>
     </div>
-    
+  </div>
+</section>
+
+<main class="flex-grow-1">
+  <div class="container-fluid-custom">
+
+    <section class="mb-5">
+      <h2 class="product-section-title">Our Picks</h2>
+      <div class="row g-4" id="ourPicksGrid">
+        </div>
+    </section>
+
+    <section class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="product-section-title mb-0">Latest Releases</h2>
+        <a href="#" class="btn btn-sm btn-outline-warning">اكتشف الكل <i class="fas fa-arrow-left me-1"></i></a>
+      </div>
+      <div class="product-slider-container">
+        <div class="d-inline-flex" id="latestReleasesSlider">
+          </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="product-section-title mb-0">Best Sellers</h2>
+        <a href="#" class="btn btn-sm btn-outline-warning">اكتشف الكل <i class="fas fa-arrow-left me-1"></i></a>
+      </div>
+      <div class="product-slider-container">
+        <div class="d-inline-flex" id="bestSellersSlider">
+          </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="product-section-title">Hot Deals</h2>
+        <div class="row g-4" id="hotDealsGrid">
+            </div>
+    </section>
+
   </div>
 </main>
 
-<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
+<div class="modal fade" id="productDetailModal" tabindex="-1" aria-labelledby="productDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-lg-down">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="productModalTitle">اسم المنتج</h5>
+        <h5 class="modal-title" id="productDetailModalLabel">تفاصيل المنتج</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-md-6">
-            <img src="" class="img-fluid w-100" id="productModalImage" alt="صورة المنتج">
-          </div>
-          <div class="col-md-6">
-            <h3 id="productModalPrice" class="card-price mb-3">السعر</h3>
-            <p id="productModalDescription">وصف المنتج الكامل...</p>
-            <hr class="border-secondary">
-            <p class="text-white-50 small">لإتمام عملية الشراء، اضغط على الزر وتواصل معنا عبر تيليجرام لإرسال إثبات الدفع وسنقوم بتسليم المنتج فوراً.</p>
-            <a href="#" id="modalPurchaseLink" class="btn btn-gold btn-lg w-100" target="_blank" rel="noopener noreferrer">
-              إتمام الشراء عبر تيليجرام
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="settingsModalLabel">لوحة التحكم</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        
-        <div id="loginScreen">
-          <label for="passInput" class="form-label">ادخل كلمة المرور</label>
-          <input type="password" id="passInput" class="form-control mb-2" placeholder="كلمة السر">
-          <button class="btn btn-gold w-100" id="loginBtn">دخول</button>
-          <div id="loginError" class="text-danger mt-2 d-none">كلمة المرور خاطئة</div>
-        </div>
-
-        <div id="toolsScreen" class="d-none">
-          <h4>إدارة المنتجات</h4>
-          <p class="text-white-50">استخدم تنسيق JSON لإضافة منتجاتك. عدّل، احذف، أو أضف منتجات جديدة في هذا المربع، ثم اضغط "حفظ".</p>
-          <textarea id="productsEditor" class="form-control" rows="15" dir="ltr" style="text-align: left;"></textarea>
-          <hr>
-          <div class="row">
-            <div class="col-md-6">
-              <label for="telegramLinkInput" class="form-label">رابط تيليجرام (الافتراضي)</label>
-              <input type="text" id="telegramLinkInput" class="form-control" placeholder="https://t.me/username">
-            </div>
-            <div class="col-md-6">
-              <label for="siteTitleInput" class="form-label">عنوان الموقع</label>
-              <input type="text" id="siteTitleInput" class="form-control" placeholder="اسم الموقع">
+          <div class="col-lg-5 mb-4 mb-lg-0">
+            <img src="" id="mainProductImage" class="main-product-image mb-3" alt="صورة المنتج الرئيسية">
+            <div class="d-flex justify-content-center product-image-gallery gap-2" id="productImageGallery">
+              <img src="https://via.placeholder.com/80x80" alt="صورة مصغرة 1" class="img-thumbnail" onclick="changeMainImage(this)">
             </div>
           </div>
-          <hr>
-          <button class="btn btn-primary w-100 btn-lg" id="saveBtn">حفظ التغييرات</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-<script>
-  // تحديد العناصر
-  const $ = (s) => document.getElementById(s);
-  const productGrid = $('productGrid');
-  const productModal = new bootstrap.Modal($('productModal'));
-  const settingsModal = new bootstrap.Modal($('settingsModal'));
-
-  // عناصر المودال
-  const modalTitle = $('productModalTitle');
-  const modalImage = $('productModalImage');
-  const modalPrice = $('productModalPrice');
-  const modalDescription = $('productModalDescription');
-  const modalPurchaseLink = $('modalPurchaseLink');
-  
-  // عناصر الإعدادات
-  const loginScreen = $('loginScreen');
-  const toolsScreen = $('toolsScreen');
-  const passInput = $('passInput');
-  const loginBtn = $('loginBtn');
-  const loginError = $('loginError');
-  const productsEditor = $('productsEditor');
-  const saveBtn = $('saveBtn');
-  const telegramLinkInput = $('telegramLinkInput');
-  const siteTitleInput = $('siteTitleInput');
-
-  // حالة التطبيق
-  let state = {
-    secret: "zozasofsa12345678901",
-    siteTitle: "متجر المنتجات",
-    defaultTelegramLink: "https://t.me/YourUsername",
-    products: []
-  };
-
-  // مثال للمنتجات (إذا كان المتجر فارغاً)
-  const exampleProducts = [
-    {
-      "id": 1,
-      "title": "منتج رقم 1",
-      "price": "50 ج.م",
-      "description": "هذا هو الوصف الكامل للمنتج الأول. يمكنك كتابة تفاصيل المنتج هنا وكيفية استخدامه.",
-      "imageUrl": "https://via.placeholder.com/600x400/ffb703/241700?text=Product+1",
-      "telegramLink": "" // فارغ لاستخدام الرابط الافتراضي
-    },
-    {
-      "id": 2,
-      "title": "منتج رقم 2 (رابط خاص)",
-      "price": "120 ج.م",
-      "description": "هذا منتج له رابط تيليجرام مختلف مخصص له.",
-      "imageUrl": "https://via.placeholder.com/600x400/ffd166/241700?text=Product+2",
-      "telegramLink": "https://t.me/AnotherUser"
-    }
-  ];
-
-  // ============================
-  //  دوال حفظ وتحميل البيانات
-  // ============================
-
-  function loadState() {
-    const savedState = localStorage.getItem('bootstrapStoreState');
-    if (savedState) {
-      state = JSON.parse(savedState);
-    } else {
-      // إذا كان أول مرة، استخدم المثال
-      state.products = exampleProducts;
-    }
-    // تطبيق الإعدادات المحفوظة
-    $('siteTitle').textContent = state.siteTitle;
-    document.title = state.siteTitle; // <-- تطبيق العنوان من الإعدادات
-    
-    // تحميل البيانات في لوحة التحكم
-    productsEditor.value = JSON.stringify(state.products, null, 2); // null, 2 = تنسيق جميل
-    telegramLinkInput.value = state.defaultTelegramLink;
-    siteTitleInput.value = state.siteTitle;
-  }
-
-  function saveState() {
-    try {
-      // قراءة البيانات من المحرر
-      state.products = JSON.parse(productsEditor.value);
-      state.defaultTelegramLink = telegramLinkInput.value;
-      state.siteTitle = siteTitleInput.value;
-      
-      localStorage.setItem('bootstrapStoreState', JSON.stringify(state));
-      
-      applySettings(); // تطبيق التغييرات على الواجهة
-      renderProducts(); // إعادة رسم المنتجات
-      
-      // إخفاء مودال الإعدادات
-      settingsModal.hide();
-
-    } catch (e) {
-      alert("خطأ في تنسيق JSON! \nتأكد من الأقواس والفواصل. \n" + e.message);
-    }
-  }
-  
-  function applySettings() {
-      $('siteTitle').textContent = state.siteTitle;
-      // تغيير العنوان الذي يظهر في "البحث" (التاب)
-      document.title = "free chatgpt plus"; // <-- تم تثبيته بناءً على طلبك
-  }
-
-  // ============================
-  //  دالة رسم المنتجات
-  // ============================
-  
-  function renderProducts() {
-    productGrid.innerHTML = ''; // إفراغ الشبكة
-    if (state.products.length === 0) {
-      productGrid.innerHTML = '<p class="text-white-50">لا توجد منتجات لعرضها. أضف منتجات من لوحة الإعدادات.</p>';
-      return;
-    }
-
-    state.products.forEach(product => {
-      // اختصار الوصف
-      const shortDesc = product.description.length > 100 ? product.description.substring(0, 100) + '...' : product.description;
-
-      const cardHTML = `
-        <div class="col-lg-4 col-md-6">
-          <div class="card product-card h-100">
-            <img src="${product.imageUrl}" class="card-img-top product-card-img" alt="${product.title}">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">${product.title}</h5>
-              <p class="card-text flex-grow-1">${shortDesc}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <span class="card-price">${product.price}</span>
-                <button class="btn btn-gold" 
-                        data-bs-toggle="modal" 
-                        data-bs-target="#productModal" 
-                        data-id="${product.id}">
-                  عرض التفاصيل
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-      productGrid.innerHTML += cardHTML;
-    });
-  }
-
-  // ============================
-  //  التعامل مع الأحداث (Events)
-  // ============================
-
-  // 1. عند فتح نافذة تفاصيل المنتج
-  $('productModal').addEventListener('show.bs.modal', function (event) {
-    // الزر الذي تم الضغط عليه
-    const button = event.relatedTarget;
-    // استخراج ID المنتج
-    const productId = button.getAttribute('data-id');
-    
-    // إيجاد المنتج في البيانات
-    const product = state.products.find(p => p.id == productId);
-
-    if (product) {
-      // ملء بيانات المودال
-      modalTitle.textContent = product.title;
-      modalImage.src = product.imageUrl;
-      modalPrice.textContent = product.price;
-      modalDescription.textContent = product.description;
-      
-      // تحديد رابط تيليجرام (إما الرابط الخاص بالمنتج أو الرابط الافتراضي)
-      modalPurchaseLink.href = product.telegramLink || state.defaultTelegramLink;
-    }
-  });
-
-  // 2. عند الضغط على زر الدخول في الإعدادات
-  loginBtn.addEventListener('click', () => {
-    if (passInput.value === state.secret) {
-      loginScreen.classList.add('d-none');
-      toolsScreen.classList.remove('d-none');
-      loginError.classList.add('d-none');
-    } else {
-      loginError.classList.remove('d-none');
-    }
-  });
-  
-  // 3. عند إغلاق مودال الإعدادات (لإعادة ضبط شاشة الدخول)
-  $('settingsModal').addEventListener('hidden.bs.modal', function () {
-     loginScreen.classList.remove('d-none');
-     toolsScreen.classList.add('d-none');
-     passInput.value = '';
-     loginError.classList.add('d-none');
-  });
-
-  // 4. عند الضغط على "حفظ التغييرات"
-  saveBtn.addEventListener('click', saveState);
-
-  // ============================
-  //  بدء تشغيل التطبيق
-  // ============================
-  
-  loadState();
-  renderProducts();
-
-  // ملاحظة: تم تثبيت العنوان بناءً على طلبك
-  document.title = "free chatgpt plus";
-  
-</script>
-
-</body>
-</html>
+          <div class="col-lg-7">
+            <h1 class="mb-3" id="productDetailTitle">اسم المنتج</h1>
+            <div class="d-flex align-items-center mb-3">
+              <span class="product-card-stars me-2" id="productDetailRating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> (
